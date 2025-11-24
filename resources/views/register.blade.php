@@ -1,6 +1,6 @@
 <h1>Register<h1>
 
-<form method="post" action="{{ route('register.validate) }}">
+<form method="post" action="{{ route('register.validate') }}">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" value="{{ old('name') }}">
 

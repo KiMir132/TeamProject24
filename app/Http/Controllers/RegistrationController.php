@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use App\Models\User;
+use Hash;
 
 class RegistrationController extends Controller
 {
@@ -20,6 +23,10 @@ class RegistrationController extends Controller
             'password' => 'required|string|min:8|confirmed'
         ]);
 
-        dd('Form validated');
+        $user = User::Create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
     }
 }

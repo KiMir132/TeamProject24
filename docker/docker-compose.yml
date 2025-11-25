@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: php/Dockerfile
+    container_name: teamproject_app
+    volumes:
+      - ../:/var/www/html
+    networks:
+      - teamproject
+    depends_on:
+      - mysql
+
+  nginx:
+    image: nginx:latest
+    container_name: teamproject_nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - ../:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - teamproject
+
+  mysql:
+    image: mysql:8
+    container_name: teamproject_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - teamproject
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: teamproject_pma
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: root
+    networks:
+      - teamproject
+
+networks:
+  teamproject:
+
+volumes:
+  mysql_data:

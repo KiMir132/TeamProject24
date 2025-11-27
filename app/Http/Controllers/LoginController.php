@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class LoginController extends Controller
 {
@@ -28,5 +29,13 @@ class LoginController extends Controller
         }
 
         return back()->withInput();
+    }
+
+    public function logout(): RedirectResponse
+    {
+        Session::flush();
+        Auth::logout();
+
+        return redirect('login');
     }
 }

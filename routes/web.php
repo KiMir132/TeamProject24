@@ -17,4 +17,8 @@ Route::post('register', [RegistrationController::class, 'validateForm'])
 Route::get('login', [LoginController::class, 'showForm'])
     ->name('login');
 
-Route::post('login', [LoginController::class, 'login'])->name('login.login');
+Route::post('login', [LoginController::class, 'login'])
+    ->name('login.login');
+
+Route::get('logout', [LoginController::class, 'logout'])
+    ->name('logout');

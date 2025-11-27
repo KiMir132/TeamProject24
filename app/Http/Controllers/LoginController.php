@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+
+class LoginController extends Controller
+{
+    public function showForm(): View
+    {
+        return view('login');
+    }
+
+    public function login(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        $account = $request->only('email','password');
+        if(Auth::attempt($account)){
+            return redirect('/')
+                ->with('status','Successfully Logged in');
+        }
+
+        return back()->withInput();
+    }
+}

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     return view('home');
@@ -22,3 +23,6 @@ Route::post('login', [LoginController::class, 'login'])
 
 Route::get('logout', [LoginController::class, 'logout'])
     ->name('logout');
+
+Route::get('cart', [CartController::class], 'showCart')
+    ->name('cart');

@@ -31,3 +31,7 @@ Route::get('cart', [CartController::class, 'showCart'])
 Route::post('cart/add/{product}', [CartController::class, 'addToCart'])
     ->middleware('auth')
     ->name('cart.add');
+
+Route::delete('cart/remove/{product}', [CartController::class, 'removeFromCart'])
+    ->name('cart.remove')
+    ->middleware('auth');

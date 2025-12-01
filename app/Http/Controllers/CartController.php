@@ -60,4 +60,32 @@ class CartController extends Controller
             ]);
         }
     }
+
+    public function removeFromCart(Request $request, Product $product)
+    {
+        $user = $request->user();
+
+        $cart = Cart::where('UID', $user->UID)->first();
+
+        if (!$cart) {
+            return redirect()->route('cart.show')
+                ->with('status', 'No cart found.');
+        }
+
+        $cartItem = CartItem::where('CartID', $cart->CartID)
+            ->where('ProductID', $product->ProductID)
+            ->first();
+
+        if (!$cartItem) {
+            return redirect()->route('cart.show')
+                ->with('status', 'No items in cart');
+        }
+
+        $cartItem->delete();
+
+        $cart->Total_Price = CartItem::where('CartID', $cart->CartID)->sum('Price');
+        $cart->save();
+
+        return redirect()->route('cart.show')->with('status', 'Item removed.');
+    }
 }

@@ -1,3 +1,13 @@
 <div>
-    <!-- I begin to speak only when I am certain what I will say is not better left unsaid. - Cato the Younger -->
+    <h1>Your Cart</h1>
+
+    @if($cart && $cart->items->count())
+        @foreach($cart->items as $item)
+            <div>
+                {{ $item->product->Name }} – Qty: {{ $item->Quantity }} – ${{ $item->Price }}
+            </div>
+        @endforeach
+    @else
+        <p>Your cart is empty.</p>
+    @endif
 </div>

@@ -24,6 +24,7 @@ class LoginController extends Controller
 
         $account = $request->only('email','password');
         if(Auth::attempt($account)){
+            auth()->user()->UID;
             return redirect('/')
                 ->with('status','Successfully Logged in');
         }

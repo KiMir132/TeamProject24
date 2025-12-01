@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CartController;
-
+use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('home');
 });
@@ -24,7 +24,7 @@ Route::post('login', [LoginController::class, 'login'])
 Route::get('logout', [LoginController::class, 'logout'])
     ->name('logout');
 
-Route::get('cart', [CartController::class, 'showCart'])
+    Route::get('cart', [CartController::class, 'showCart'])
     ->middleware('auth')
     ->name('cart');
 
@@ -35,3 +35,10 @@ Route::post('cart/add/{product}', [CartController::class, 'addToCart'])
 Route::delete('cart/remove/{product}', [CartController::class, 'removeFromCart'])
     ->name('cart.remove')
     ->middleware('auth');
+
+
+Route::get('/products', [ProductController::class, 'index'])
+    ->name('products.index');
+
+Route::get('/products/search', [ProductController::class, 'search'])
+    ->name('products.search');

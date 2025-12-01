@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\CartItem;
@@ -14,14 +15,14 @@ class CartController extends Controller
         $cart = Cart::where('UID', $request->user()->UID)
             ->with('items.product')
             ->first();
-              
-        return view('cart');
+
+        return view('cart', compact('cart'));
     }
 
     public function makeCart(Request $request)
     {
         $cart = Cart::create([
-            'UID'=> $request->user()->UID,
+            'UID' => $request->user()->UID,
             'Total_Price' => 0
         ]);
 

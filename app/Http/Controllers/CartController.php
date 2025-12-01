@@ -88,4 +88,18 @@ class CartController extends Controller
 
         return redirect()->route('cart.show')->with('status', 'Item removed.');
     }
+
+    public function showForm(Request $request)
+    {
+        $cart = Cart::where('UID', $request->user()->UID)
+            ->with('items.product')
+            ->first();
+
+        if (!$cart || $cart->items->count() == 0) {
+            return redirect()->route('cart')
+                ->with('status', 'Your cart is empty.');
+        }
+
+        return view('checkout', compact('cart'));
+    }
 }

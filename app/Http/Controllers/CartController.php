@@ -28,4 +28,36 @@ class CartController extends Controller
 
         return $cart;
     }
+    
+    public function addToCart(Request $request, Product $product)
+    {
+        $user = $request->user();
+        $cart = Cart::where('UID', $user->UID)->first();
+
+        if(!$cart)
+        {
+            $cart = $this->makeCart($request);
+        }
+
+        $cartItem = CartItem::where('CartID', $cart->CartID)
+        ->where('ProductID', $product->ProductID)
+        ->first();
+
+        if ($cartItem)
+        {
+            $cartItem->Quantity += 1;
+            $cartItem->Price = $cartItem->Quantity * $product->Price;
+            $cartItem->save();
+        } 
+        
+        else 
+        {
+            CartItem::create([
+                'CartID' => $cart->CartID,
+                'ProductID' => $product->ProductID,
+                'Quantity' => 1,
+                'Price' => $product->Price
+            ]);
+        }
+    }
 }

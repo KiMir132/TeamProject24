@@ -27,3 +27,7 @@ Route::get('logout', [LoginController::class, 'logout'])
 Route::get('cart', [CartController::class, 'showCart'])
     ->middleware('auth')
     ->name('cart');
+
+Route::post('cart/add/{product}', [CartController::class, 'addToCart'])
+    ->middleware('auth')
+    ->name('cart.add');

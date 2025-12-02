@@ -27,7 +27,7 @@ Route::post('login', [LoginController::class, 'login'])
 Route::get('logout', [LoginController::class, 'logout'])
     ->name('logout');
 
-    Route::get('cart', [CartController::class, 'showCart'])
+Route::get('cart', [CartController::class, 'showCart'])
     ->middleware('auth')
     ->name('cart');
 
@@ -52,3 +52,4 @@ Route::get('/products', [ProductController::class, 'index'])
 
 Route::get('/products/search', [ProductController::class, 'search'])
     ->name('products.search');
+

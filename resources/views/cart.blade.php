@@ -8,7 +8,7 @@
             <div>
                 <strong>{{ $item->product->Name }}</strong><br>
                 Quantity: {{ $item->Quantity }}<br>
-                Price: £{{ $item->Price }}<br><br>
+                Price: £{{ number_format($item->product->Price * $item->Quantity, 2)}}<br>
 
                 <form action="{{ route('cart.remove', $item->product->ProductID) }}" method="POST">
                     @csrf

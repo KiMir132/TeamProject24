@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CartItems extends Model
+class CartItem extends Model
 {
     protected $table = 'cart_items';
-    protected $primarykey = 'CartItemID';
+    protected $primaryKey = 'CartItemID';
     protected $fillable = ['Quantity','Price','CartID','ProductID'];
 
     public function product()

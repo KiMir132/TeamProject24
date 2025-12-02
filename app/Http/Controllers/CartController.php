@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\View\View;
 use App\Models\Cart;
 use App\Models\Product;
-use App\Models\CartItems;
+use App\Models\CartItem;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -39,26 +39,28 @@ class CartController extends Controller
             $cart = $this->makeCart($request);
         }
 
-        $cartItems = CartItems::where('CartID', $cart->CartID)
+        $cartItem = CartItem::where('CartID', $cart->CartID)
         ->where('ProductID', $product->ProductID)
         ->first();
 
-        if ($cartItems)
+        if ($cartItem)
         {
-            $cartItems->Quantity += 1;
-            $cartItems->Price = $cartItems->Quantity * $product->Price;
-            $cartItems->save();
+            $cartItem->Quantity += 1;
+            $cartItem->Price = $cartItem->Quantity * $product->Price;
+            $cartItem->save();
         } 
         
         else 
         {
-            CartItems::create([
+            CartItem::create([
                 'CartID' => $cart->CartID,
                 'ProductID' => $product->ProductID,
                 'Quantity' => 1,
                 'Price' => $product->Price
             ]);
         }
+
+        return redirect()->route('cart');
     }
 
     public function removeFromCart(Request $request, Product $product)
@@ -68,25 +70,25 @@ class CartController extends Controller
         $cart = Cart::where('UID', $user->UID)->first();
 
         if (!$cart) {
-            return redirect()->route('cart.show')
+            return redirect()->route('cart')
                 ->with('status', 'No cart found.');
         }
 
-        $cartItems = CartItems::where('CartID', $cart->CartID)
+        $cartItem = CartItem::where('CartID', $cart->CartID)
             ->where('ProductID', $product->ProductID)
             ->first();
 
-        if (!$cartItems) {
-            return redirect()->route('cart.show')
+        if (!$cartItem) {
+            return redirect()->route('cart')
                 ->with('status', 'No items in cart');
         }
 
-        $cartItems->delete();
+        $cartItem->delete();
 
-        $cart->Total_Price = CartItems::where('CartID', $cart->CartID)->sum('Price');
+        $cart->Total_Price = CartItem::where('CartID', $cart->CartID)->sum('Price');
         $cart->save();
 
-        return redirect()->route('cart.show')->with('status', 'Item removed.');
+        return redirect()->route('cart')->with('status', 'Item removed.');
     }
 
     public function showForm(Request $request)

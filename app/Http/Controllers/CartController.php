@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\View\View;
 use App\Models\Cart;
 use App\Models\Product;
-use App\Models\CartItem;
+use App\Models\CartItems;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -39,20 +39,20 @@ class CartController extends Controller
             $cart = $this->makeCart($request);
         }
 
-        $cartItem = CartItem::where('CartID', $cart->CartID)
+        $cartItems = CartItems::where('CartID', $cart->CartID)
         ->where('ProductID', $product->ProductID)
         ->first();
 
-        if ($cartItem)
+        if ($cartItems)
         {
-            $cartItem->Quantity += 1;
-            $cartItem->Price = $cartItem->Quantity * $product->Price;
-            $cartItem->save();
+            $cartItems->Quantity += 1;
+            $cartItems->Price = $cartItems->Quantity * $product->Price;
+            $cartItems->save();
         } 
         
         else 
         {
-            CartItem::create([
+            CartItems::create([
                 'CartID' => $cart->CartID,
                 'ProductID' => $product->ProductID,
                 'Quantity' => 1,
@@ -72,18 +72,18 @@ class CartController extends Controller
                 ->with('status', 'No cart found.');
         }
 
-        $cartItem = CartItem::where('CartID', $cart->CartID)
+        $cartItems = CartItems::where('CartID', $cart->CartID)
             ->where('ProductID', $product->ProductID)
             ->first();
 
-        if (!$cartItem) {
+        if (!$cartItems) {
             return redirect()->route('cart.show')
                 ->with('status', 'No items in cart');
         }
 
-        $cartItem->delete();
+        $cartItems->delete();
 
-        $cart->Total_Price = CartItem::where('CartID', $cart->CartID)->sum('Price');
+        $cart->Total_Price = CartItems::where('CartID', $cart->CartID)->sum('Price');
         $cart->save();
 
         return redirect()->route('cart.show')->with('status', 'Item removed.');

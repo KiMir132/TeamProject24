@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CartItem extends Model
+class CartItems extends Model
 {
-    protected $table = 'cart_item';
+    protected $table = 'cart_items';
     protected $primarykey = 'CartItemID';
     protected $fillable = ['Quantity','Price','CartID','ProductID'];
 

@@ -1,0 +1,237 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class ProductSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        DB::table('product')->insert([
+            [
+                'name' => 'AMD Ryzen 7 5800X',
+                'description' => '8-core, 16-thread unlocked processor with high-preformance architecture',
+                'type' => 'CPU',
+                'quantity' => 30,
+                'price' => 299.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+
+            ],
+            [
+                'name' => 'Intel Core i5-12600K',
+                'description' => '10-core hybrid architecture CPU designed for gaming and general purpose',
+                'type' => 'CPU',
+                'quantity' => 40,
+                'price' => 279.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'NVIDIA GeForce RTX 4070',
+                'description' => 'High-end graphics card with DLSS 3 and ray tracing',
+                'type' => 'GPU',
+                'quantity' => 15,
+                'price' => 599.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'ASUS ROG Strix B550-F',
+                'description' => 'ATX Gaming motherboard with PCIe 4.0',
+                'type' => 'Motherboard',
+                'quantity' => 50,
+                'price' => 189.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Corsair Vengeance LPX 16GB DDR4 3200MHz',
+                'description' => 'High-speed DDR4 memory made for reliability and preformance',
+                'type' => 'RAM',
+                'quantity' => 60,
+                'price' => 59.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Samsung 970 EVO Plus 1TB NVMe SSD',
+                'description' => 'Ultra-fast NVMe SSD with up to 3500MB/s read speed',
+                'type' => 'Storage',
+                'quantity' => 30,
+                'price' => 129.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Seagate Barracuda 2TB HDD',
+                'description' => 'Reliable 7200RPM hard drive ideal for desktop storage',
+                'type' => 'Storage',
+                'quantity' => 45,
+                'price' => 54.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'EVGA 650W Gold Fully Modular PSU',
+                'description' => 'High-efficency 80+ Gold Power supply with modular cables',
+                'type' => 'Power Supply',
+                'quantity' => 19,
+                'price' => 79.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'NZXT H510 Mid Tower Case',
+                'description' => 'Minimalist mid-tower case with tempered glass and cable manaagement',
+                'type' => 'Case',
+                'quantity' => 12,
+                'price' => 79.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Noctua NH-D15 CPU Cooler',
+                'description' => 'Premium dual-tower air cooler with exceptional thermal preformance',
+                'type' => 'Cooling',
+                'quantity' => 14,
+                'price' => 99.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Logitech G502 HERO Gaming Mouse',
+                'description' => 'High-precision gaming mouse with adjustable weights',
+                'type' => 'Accessory',
+                'quantity' => 50,
+                'price' => 49.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Razer BlackWidow V3 Mechanical Keyboard',
+                'description' => 'RGB mechanical keyboard with tactile switches',
+                'type' => 'Accessory',
+                'quantity' => 28,
+                'price' => 119.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Dell 27" IPS 144Hz Gaming Monitor',
+                'description' => 'High-refresh IPS panel with vibrant color accuracy',
+                'type' => 'Monitor',
+                'quantity' => 16,
+                'price' => 249.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'HyperX Cloud II Gaming Headset',
+                'description' => 'Comfortable gaming headset with virtual 7.1 surround sound',
+                'type' => 'Accessory',
+                'quantity' => 33,
+                'price' => 79.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'TP-Link Archer AX73 WiFi 6 Router',
+                'description' => 'High-Speed Wifi 6 router with strong coverage and stability',
+                'type' => 'Networking',
+                'quantity' => 22,
+                'price' => 149.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Elgato HD60 5+ Capture Card',
+                'description' => '1080p60 HDR capture card ideal for streaming',
+                'type' => 'Accessory',
+                'quantity' => 11,
+                'price' => 179.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'AOC 24" 75Hz Monitor',
+                'description' => 'Affordable IPS monitor suitable for general use',
+                'type' => 'Monitor',
+                'quantity' => 25,
+                'price' => 119.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Kingston 32GB DDR4 "600MHZ Kit',
+                'description' => 'Dual-channel Ram kit offering high preformance for gaming',
+                'type' => 'RAM',
+                'quantity' => 27,
+                'price' => 129.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Crucial BX500 480GB SSD',
+                'description' => 'Reliable entry-level SATA SSD offering fast boot times',
+                'type' => 'Storage',
+                'quantity' => 45,
+                'price' => 39.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Apple Iphone 14 Pro MAx',
+                'description' => '6.7-inch OLED display, A16 Bionic chip, 48MP camera system',
+                'type' => 'Phone',
+                'quantity' => 20,
+                'price' => 1099.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Samsung Galaxy S23 Ultra',
+                'description' => '6.8-inch AMOLED display, Snapdragon 8 Gen 2, 200MP main camera',
+                'type' => 'Phone',
+                'quantity' => 18,
+                'price' => 1199.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Google Pixel 8 Pro',
+                'description' => '6.7-inch LTPO OLED display, Google Tensor G3, advanced AI camera',
+                'type' => 'Phone',
+                'quantity' => 15,
+                'price' => 999.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'OnePlus 11 5G',
+                'description' => '6.7-inch 120Hz AMOLED display, Snapdragon 8 Gen 2, Hasselblad camera tuning',
+                'type' => 'Phone',
+                'quantity' => 22,
+                'price' => 699.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Xiaomi Redmi Note 12 Pro',
+                'description' => '6.67-inch OLED, MediaTek Dimensity processor, 50MP triple camera',
+                'type' => 'Phone',
+                'quantity' => 17,
+                'price' => 799.99,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        ]
+            );
+    }
+}

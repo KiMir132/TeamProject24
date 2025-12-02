@@ -5,8 +5,11 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
+use App\Models\Product;
+
 Route::get('/', function () {
-    return view('home');
+    $products = Product::all();
+    return view('home', compact('products'));
 });
 
 Route::get('register', [RegistrationController::class, 'showForm'])
@@ -36,6 +39,13 @@ Route::delete('cart/remove/{product}', [CartController::class, 'removeFromCart']
     ->name('cart.remove')
     ->middleware('auth');
 
+Route::get('checkout', [CartController::class, 'showForm'])
+    ->name('checkout.form')
+    ->middleware('auth');
+
+Route::post('checkout', [CartController::class, 'checkout'])
+    ->name('checkout.process')
+    ->middleware('auth');
 
 Route::get('/products', [ProductController::class, 'index'])
     ->name('products.index');

@@ -8,7 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Models\Product;
 
 Route::get('/', function () {
-    $products = Product::all();
+     $products = Product::orderBy('Name')->take(10)->get();
     return view('home', compact('products'));
 });
 

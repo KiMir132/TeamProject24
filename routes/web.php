@@ -5,8 +5,11 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
+use App\Models\Product;
+
 Route::get('/', function () {
-    return view('home');
+    $products = Product::all();
+    return view('home', compact('products'));
 });
 
 Route::get('register', [RegistrationController::class, 'showForm'])

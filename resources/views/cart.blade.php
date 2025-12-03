@@ -10,7 +10,7 @@
                 Quantity: {{ $item->Quantity }}<br>
                 Price: £{{ number_format($item->product->Price * $item->Quantity, 2)}}<br>
 
-                <form action="{{ route('cart.remove', $item->product->ProductID) }}" method="POST">
+                <form action="{{ route('cart.remove', $item->product->ProductID) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Remove</button>
@@ -19,5 +19,8 @@
         @endforeach
 
         <h3>Total: £{{ $cart->items->sum('Price') }}</h3>
+        <form action="{{ route('checkout.form') }}" method="get">
+            <button type="submit">Checkout</button>
+        </form>
     @endif
 </div>

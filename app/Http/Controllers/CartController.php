@@ -6,6 +6,8 @@ use Illuminate\View\View;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\CartItem;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -103,5 +105,36 @@ class CartController extends Controller
         }
 
         return view('checkout', compact('cart'));
+    }
+
+    public function checkout(Request $request)
+    {
+        $user = $request->user();
+
+        $cart = Cart::where('UID', $user->UID)
+            ->with('items.product')
+            ->first();
+
+        if (!$cart || $cart->items->isEmpty()) {
+            return redirect()->back()->withErrors('Your cart is empty.');
+        }
+
+        $order = Order::create([
+            'UID'       => $user->UID,
+            'Order_date'=> now(),
+        ]);
+
+        foreach ($cart->items as $item) {
+            OrderItem::create([
+                'OrderID'   => $order->OrderID,
+                'ProductID' => $item->ProductID,
+                'Quantity'  => $item->Quantity,
+                'Price'     => $item->Price,
+            ]);
+        }
+
+        $cart->items()->delete();
+
+        return redirect()->route('orders');
     }
 }

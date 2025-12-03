@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
      $products = Product::orderBy('Name')->take(10)->get();
@@ -52,4 +53,9 @@ Route::get('/products', [ProductController::class, 'index'])
 
 Route::get('/products/search', [ProductController::class, 'search'])
     ->name('products.search');
+
+Route::get('orders', [OrderController::class, 'showOrders'])
+    ->name('orders')
+    ->middleware('auth');
+
 

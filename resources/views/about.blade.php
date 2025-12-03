@@ -1,3 +1,5 @@
 <div>
-    <!-- I have not failed. I've just found 10,000 ways that won't work. - Thomas Edison -->
+    <h1>About Us</h1>
+    <p>This is the about page.</p>
+
 </div>

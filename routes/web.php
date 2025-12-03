@@ -59,6 +59,9 @@ Route::get('orders', [OrderController::class, 'showOrders'])
     ->middleware('auth');
 
 Route::get('/about', function () {
-return view('about');}) ->name('about');
+    return view('about');}) ->name('about');
 
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 

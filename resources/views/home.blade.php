@@ -9,7 +9,51 @@
 
 <body>
     <nav>
-        NAV GOES HERE
+    <ul>
+        <li>
+            <a href="{{ url('/') }}">Home</a>
+        </li>
+
+        
+        <li>
+            <a href="#">User ▾</a>
+            <ul>
+                <li><a href="{{ route('register') }}">Registration</a></li>
+                <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a href="{{ route('orders') }}">Orders history</a></li>
+            </ul>
+        </li>
+
+        
+        <li>
+            <a href="{{ route('products.index') }}">Products ▾</a>
+            
+        </li>
+
+      
+
+
+
+       
+        <li>
+            <a href="#">Information ▾</a>
+            <ul>
+                <li><a href="{{ route('about') }}">About Us</a></li>
+                <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                <li><a href="#">Terms &amp; Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </li>
+
+        
+        <li>
+            <a href="#">Support ▾</a>
+            <ul>
+                <li><a href="#">Live chat</a></li>
+                <li><a href="#">Help desk / Feedback</a></li>
+            </ul>
+        </li>
+    </ul>
     </nav>
     {{-- Hero Section --}}
     <section class="hero">

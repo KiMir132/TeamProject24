@@ -1,60 +1,9 @@
 <html>
 <head>
     <title>Home</title>
-    <style>
-        
-        nav {
-            background: #024c7aff;
-            padding: 10px 20px;
-            margin-bottom: 20px;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 25px;
-        }
-
-        nav li {
-            position: relative;
-        }
-
-        nav > ul > li > a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        
-        nav li ul {
-            display: none;
-            position: absolute;
-            background: #333;
-            padding: 10px;
-            list-style: none;
-            margin: 0;
-            min-width: 180px;
-            z-index: 10;
-        }
-
-        nav li:hover ul {
-            display: block;
-        }
-
-        nav li ul li a {
-            display: block;
-            color: #fff;
-            padding: 5px 0;
-            text-decoration: none;
-            font-weight: 400;
-        }
-
-        nav li ul li a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
 </head>
 <body>
 
@@ -108,13 +57,38 @@
 </nav>
 
 <div>
-
  <h1>Contact Us</h1>
- <p>This is the contact page.</p>
-
+ <p>Need help? Send us a message and we will assist you further.</p>
+<div class="container mt-5">
+    <form id="contactForm">
+        <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Your Email</label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea class="form-control" id="message" rows="5" placeholder="Your message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Message</button>
+    </form>
+    <div id="responseMessage" class="mt-3 text-success" style="display:none;">
+        Thank you! Your message has been forwarded to our team, we'll be in touch soon.
+    </div>
+</div>
 </div>
 
-
-
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('responseMessage').style.display = 'block';
+        this.reset();
+    });
+</script>
+</body>
+</html>
 
 

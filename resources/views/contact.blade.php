@@ -25,16 +25,7 @@
         </li>
 
         
-        <li>
-            <a href="{{ route('products.index') }}">Products ▾</a>
-            
-        </li>
-
-      
-
-
-
-       
+     
         <li>
             <a href="#">Information ▾</a>
             <ul>
@@ -56,10 +47,13 @@
     </ul>
 </nav>
 
-<div>
- <h1>Contact Us</h1>
- <p>Need help? Send us a message and we will assist you further.</p>
-<div class="container mt-5">
+<div class="page-content contact-form-wrapper">
+    <div class="contact-header">
+        <h1>Contact Us</h1>
+        <p>Need help? Send us a message and we will assist you further.</p>
+    </div>
+
+    <div class="container mt-5">
     <form id="contactForm">
         <div class="mb-3">
             <label for="name" class="form-label">Your Name</label>
@@ -88,6 +82,14 @@
         this.reset();
     });
 </script>
+
+<footer class="footer" id="contact">
+        <div class="footer-inner">
+            <div>© {{ date('Y') }} E-Quipment. All rights reserved.</div>
+            <div>Need help? Email E-Quipment123@gmail.com</div>
+        </div>
+</footer>
+
 </body>
 </html>
 

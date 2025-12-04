@@ -1,61 +1,160 @@
-        
-        nav {
-            background: #024c7aff;
-            padding: 10px 20px;
-            margin-bottom: 20px;
-        }
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
 
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 25px;
-        }
+:root {
+    --primary: #f8f1ff;
+    --secondary: #ffffff;
+    --accent: #1f2839;
+    --text: #000;
+}
 
-        nav li {
-            position: relative;
-        }
 
-        nav > ul > li > a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-        }
+html {
+    font-family: "Ubuntu", sans-serif;
+    background-color: var(--primary);
+}
 
-        
-        nav li ul {
-            display: none;
-            position: absolute;
-            background: #333;
-            padding: 10px;
-            list-style: none;
-            margin: 0;
-            min-width: 180px;
-            z-index: 10;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        nav li:hover ul {
-            display: block;
-        }
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    background: var(--primary);
+    color: var(--text);
+}
 
-        nav li ul li a {
-            display: block;
-            color: #fff;
-            padding: 5px 0;
-            text-decoration: none;
-            font-weight: 400;
-        }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-        nav li ul li a:hover {
-            text-decoration: underline;
-        }
+
+nav {
+    background: var(--accent);
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+nav li {
+    position: relative;
+}
+
+nav > ul > li > a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav li ul {
+    display: none;
+    position: absolute;
+    background: #333;
+    padding: 10px;
+    list-style: none;
+    margin: 0;
+    min-width: 180px;
+    z-index: 10;
+}
+
+nav li:hover ul {
+    display: block;
+}
+
+nav li ul li a {
+    display: block;
+    color: #fff;
+    padding: 5px 0;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+nav li ul li a:hover {
+    text-decoration: underline;
+}
+
+
+.page-content {
+    padding: 30px 40px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.contact-header {
+    margin-bottom: 1.5rem;
+}
+
+.contact-header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2rem;
+}
+
+.contact-header p {
+    margin: 0;
+    font-size: 1rem;
+    color: #4b5563;
+}
+
+
+.contact-form-wrapper .container {
+    padding: 0;
+}
 
 
 p {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
-h1,
-p {
-    margin-left: 3rem;
+
+.footer {
+    padding: 24px 40px;
+    background: #111827;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    margin-top: 40px;
 }
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+btn-primary, .btn.btn-primary {
+    background: var(--accent) ; 
+    border: none;
+    color: var(--primary) ;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-primary:hover {
+    background: #131a28 !important; 
+}
+
+.product-card {
+    width: 100%;
+    max-width: 360px;   /* Prevents super long giant card */
+    margin: 0 auto;     /* Centers single card */
+}
+
+@media (max-width: 768px) {
+    .page-content {
+        padding: 24px 20px 40px;
+    }
+}
+

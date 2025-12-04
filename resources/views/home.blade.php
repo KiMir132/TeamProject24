@@ -24,16 +24,6 @@
             </ul>
         </li>
 
-        
-        <li>
-            <a href="{{ route('products.index') }}">Products ▾</a>
-            
-        </li>
-
-      
-
-
-
        
         <li>
             <a href="#">Information ▾</a>

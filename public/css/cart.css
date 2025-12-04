@@ -3,7 +3,7 @@
 :root {
     --primary: #f8f1ff;
     --secondary: #decdf5;
-    --accent: #1b998b;
+    --accent: #1f2839;
     --text: #000;
 }
 
@@ -14,4 +14,5 @@ html {
 
 #cart-section {
     display: flex;
+    flex-direction: column;
 }

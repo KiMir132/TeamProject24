@@ -82,7 +82,7 @@
         <p>If you have any questions, send us a message on the <a href="{{ route('contact') }}">Contact Us</a> page — our team will be happy to assist you.</p>
         <p>
             Ready to start shopping?
-            <a href="{{ route('register') }}" class="btn-primary about-btn">Register</a>
+            <a href="{{ route('register') }}" class="about-link">Register</a>
             <span class="about-cta-text">Already have an account?</span>
             <a href="{{ route('login') }}" class="about-link">Log in</a>
         </p>

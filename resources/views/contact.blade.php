@@ -75,20 +75,13 @@
 </div>
 </div>
 
-<script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        document.getElementById('responseMessage').style.display = 'block';
-        this.reset();
-    });
-</script>
-
 <footer class="footer" id="contact">
         <div class="footer-inner">
             <div>© {{ date('Y') }} E-Quipment. All rights reserved.</div>
             <div>Need help? Email E-Quipment123@gmail.com</div>
         </div>
 </footer>
+<script src="{{asset('js/contact.js')}}"></script>
 
 </body>
 </html>

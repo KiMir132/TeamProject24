@@ -148,8 +148,8 @@ btn-primary, .btn.btn-primary {
 
 .product-card {
     width: 100%;
-    max-width: 360px;   /* Prevents super long giant card */
-    margin: 0 auto;     /* Centers single card */
+    max-width: 360px;
+    margin: 0 auto;   
 }
 
 @media (max-width: 768px) {

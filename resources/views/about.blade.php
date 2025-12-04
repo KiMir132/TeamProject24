@@ -60,3 +60,9 @@
 <p>If you have any queries send us a message on the <a href="{{route('contact')}}">Contact Us</a> page; our team will be more than happy to assist you.</p>
 <p>Are you ready to shop? Why not <a href="{{ route('register')}}">Register</a> and make an account with us. Already have an account? Then <a href="{{ route('login')}}">Log In</a> and jump back in! </p>
 </div>
+<footer class="footer" id="contact">
+        <div class="footer-inner">
+            <div>© {{ date('Y') }} E-Quipment. All rights reserved.</div>
+            <div>Need help? Email E-Quipment123@gmail.com</div>
+        </div>
+</footer>

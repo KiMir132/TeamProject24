@@ -1,60 +1,7 @@
 <html>
 <head>
     <title>Home</title>
-    <style>
-        
-        nav {
-            background: #024c7aff;
-            padding: 10px 20px;
-            margin-bottom: 20px;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 25px;
-        }
-
-        nav li {
-            position: relative;
-        }
-
-        nav > ul > li > a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        
-        nav li ul {
-            display: none;
-            position: absolute;
-            background: #333;
-            padding: 10px;
-            list-style: none;
-            margin: 0;
-            min-width: 180px;
-            z-index: 10;
-        }
-
-        nav li:hover ul {
-            display: block;
-        }
-
-        nav li ul li a {
-            display: block;
-            color: #fff;
-            padding: 5px 0;
-            text-decoration: none;
-            font-weight: 400;
-        }
-
-        nav li ul li a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
 </head>
 <body>
 
@@ -108,6 +55,8 @@
 </nav>
 <div>
     <h1>About Us</h1>
-    <p>This is the about page.</p>
-
+    <p>Welcome to <strong>E-Quipment</strong>, your trusted destination for high-quality computer hardware and components, which are guaranteed to last. Our goal is to make PC building and upgrading simple, accessible, and enjoyable by offering only premium parts that meet our quality standards.</p>
+<p>At E-Quipment, we have partnered with many reputable brands and carefully select each item in our store to ensure it delivers the performance, durability, and value our customers expect. Whether you are assembling your first PC or optimising a powerful rig, our expert team is here to support you every step of the way. We provide clear product descriptions, expert recommendations, and a smooth shopping experience so you can find exactly what you nee without the confusion.</p>
+<p>If you have any queries send us a message on the <a href="{{route('contact')}}">Contact Us</a> page; our team will be more than happy to assist you.</p>
+<p>Are you ready to shop? Why not <a href="{{ route('register')}}">Register</a> and make an account with us. Already have an account? Then <a href="{{ route('login')}}">Log In</a> and jump back in! </p>
 </div>

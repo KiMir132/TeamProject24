@@ -47,12 +47,15 @@
     </ul>
 </nav>
 
-<div class="page-content contact-form-wrapper">
-    <div class="contact-header">
+  <section class="contact-hero">
+    <div class="contact-hero-inner">
         <h1>Contact Us</h1>
         <p>Need help? Send us a message and we will assist you further.</p>
     </div>
+  </section>
 
+   <div class="page-content contact-form-wrapper">
+    
     <div class="container mt-5">
     <form id="contactForm">
         <div class="mb-3">

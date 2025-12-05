@@ -43,10 +43,16 @@ a {
 
 /* ---------- Theme toggle button styling ---------- */
 .theme-toggle {
+
+
+    
     border: 1px solid rgba(148, 163, 184, 0.7);
     border-radius: 9999px;
     padding: 0.3rem 0.9rem;
     font-size: 0.85rem;
     background: transparent;
     cursor: pointer;
+
+
+
 }

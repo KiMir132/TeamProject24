@@ -34,4 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTheme(next);
         btn.textContent = next === 'dark' ? '🌙 Dark mode' : '☀️ Light mode';
     });
+
+
+    
 });

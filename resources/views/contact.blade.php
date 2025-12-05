@@ -34,6 +34,10 @@
             <li><a href="#">Help desk / Feedback</a></li>
             </ul>
         </li>
+
+        <li>
+            <a href="{{ route('cart') }}">Cart</a>
+        </li>
     </ul>
 </nav>
   <section class="contact-hero">

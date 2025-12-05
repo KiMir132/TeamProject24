@@ -8,7 +8,8 @@ use App\Models\CartItem;
 class Cart extends Model
 {
     protected $table = 'cart';
-    protected $primarykey = 'CartID';
+    protected $primaryKey = 'CartID';
+    public $incrementing = true;
     protected $fillable = ['UID','Total_Price'];
 
     public function items()

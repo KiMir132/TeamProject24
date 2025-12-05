@@ -57,7 +57,20 @@
                             </div>
                             <div>
                             <strong>{{ $item->product->Name }}</strong><br>
-                            Quantity: {{ $item->Quantity }}<br>
+                            Quantity: 
+                            <form action="{{ route('cart.decrease', $item->product->ProductID) }}" method="post" class="inlineForm">
+                                @csrf
+                                @method('PATCH')
+                            <button type="submit" class="smallBtn">-</button>
+                            </form>
+                            {{ $item->Quantity }} 
+                            <form action="{{ route('cart.increase', $item->product->ProductID) }}" method="post" class="inlineForm">
+                                @csrf
+                                @method('PATCH')
+                            <button type="submit" class="smallBtn">+</button>
+                            </form>
+
+                            <br>
                             Price: £{{ number_format($item->product->Price * $item->Quantity, 2)}}<br>
                             </div>
                             <div>

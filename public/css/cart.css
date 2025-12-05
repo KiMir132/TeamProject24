@@ -125,3 +125,14 @@ nav li ul li a:hover {
 #cart-total-container {
     gap: 20px;
 }
+form.inlineForm button.smallBtn{
+    width: 25px !important;
+    padding: 2px 5px !important;
+    font-size: 14px !important;
+}
+form.inlineForm {
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}

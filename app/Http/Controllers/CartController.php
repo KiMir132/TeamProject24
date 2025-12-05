@@ -27,7 +27,6 @@ class CartController extends Controller
             'UID' => $request->user()->UID,
             'Total_Price' => 0
         ]);
-
         return $cart;
     }
     
@@ -137,4 +136,43 @@ class CartController extends Controller
 
         return redirect()->route('orders');
     }
+
+    public function increase($productID)
+    {
+        $userID = auth()->id();
+        $cart = Cart::where('UID', $userID)->first();
+        $cartId = $cart->CartID;
+        $cartItem = CartItem::where('ProductID', $productID)->where('CartID', $cartId)->first();
+        $ProductPrice = Product::where('ProductID', $cartItem->ProductID)->value('Price');
+        if ($cartItem) {
+            $cartItem->Quantity++;
+            $cartItem->Price += $ProductPrice;
+            $cartItem->save();
+        }
+        return back();
+
+
+    }
+
+
+    public function decrease($productID)
+    {
+        $userID = auth()->id();
+        $cart = Cart::where('UID', $userID)->first();
+        $cartId = $cart->CartID;
+
+        $cartItem = CartItem::where('ProductID', $productID)->where('CartID', $cartId)->first();
+        $ProductPrice = Product::where('ProductID', $cartItem->ProductID)->value('Price');
+        if ($cartItem) {
+            if ($cartItem->Quantity > 1) {
+                $cartItem->Quantity--;
+                $cartItem->Price -= $ProductPrice;
+                $cartItem->save();
+            } else {
+                $cartItem->delete();
+            }
+        
+        return back();
+}
+}
 }

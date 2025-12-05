@@ -48,6 +48,14 @@ Route::post('checkout', [CartController::class, 'checkout'])
     ->name('checkout.process')
     ->middleware('auth');
 
+Route::patch('cart/increase/{product}', [CartController::class, 'increase'])
+    ->name('cart.increase')
+    ->middleware('auth');
+
+Route::patch('cart/decrease/{product}', [CartController::class, 'decrease'])
+    ->name('cart.decrease')
+    ->middleware('auth');
+
 Route::get('/products', [ProductController::class, 'index'])
     ->name('products.index');
 

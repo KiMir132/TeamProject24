@@ -184,5 +184,6 @@
         </div>
     </footer>
 
+    <script src="{{ asset('js/zoom.js') }}"></script>
 </body>
 </html>

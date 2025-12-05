@@ -9,3 +9,44 @@
 html {
     font-family: "Ubuntu", sans-serif;
 }
+/* ---------- Light / Dark theme variables ---------- */
+:root {
+    --bg-color: #f4f4f5;
+    --text-color: #020617;
+    --card-bg: #ffffff;
+    --link-color: #2563eb;
+}
+
+:root[data-theme="dark"] {
+    --bg-color: #020617;
+    --text-color: #e5e7eb;
+    --card-bg: #111827;
+    --link-color: #60a5fa;
+}
+
+/* Apply to the whole page */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Example usage for cards, navbars, etc. */
+.card, .navbar, header, footer {
+    background-color: var(--card-bg);
+}
+
+/* Links */
+a {
+    color: var(--link-color);
+}
+
+/* ---------- Theme toggle button styling ---------- */
+.theme-toggle {
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    border-radius: 9999px;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.85rem;
+    background: transparent;
+    cursor: pointer;
+}

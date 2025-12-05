@@ -1,55 +1,68 @@
+:root[data-theme="dark"] {
+    --primary: #1f2839;
+    --secondary: #111827;
+    --accent: #f8f1ff;
+    --text: #ffffff;
+}
+
+.theme-toggle {
+    background-color: var(--accent);
+    color: var(--primary);
+    border: solid var(--primary) 2px;
+    font-weight: 600;
+}
+
 nav {
-            background: #024c7aff;
-            padding: 10px 20px;
-            margin-bottom: 20px;
-        }
+    background: #024c7aff;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
 
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 25px;
-        }
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
 
-        nav li {
-            position: relative;
-        }
+nav li {
+    position: relative;
+}
 
-        nav > ul > li > a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-        }
+nav > ul > li > a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
 
-        
-        nav li ul {
-            display: none;
-            position: absolute;
-            background: #333;
-            padding: 10px;
-            list-style: none;
-            margin: 0;
-            min-width: 180px;
-            z-index: 10;
-        }
+nav li ul {
+    display: none;
+    position: absolute;
+    background: #333;
+    padding: 10px;
+    list-style: none;
+    margin: 0;
+    min-width: 180px;
+    z-index: 10;
+}
 
-        nav li:hover ul {
-            display: block;
-        }
+nav li:hover ul {
+    display: block;
+}
 
-        nav li ul li a {
-            display: block;
-            color: #fff;
-            padding: 5px 0;
-            text-decoration: none;
-            font-weight: 400;
-        }
+nav li ul li a {
+    display: block;
+    color: #fff;
+    padding: 5px 0;
+    text-decoration: none;
+    font-weight: 400;
+}
 
-        nav li ul li a:hover {
-            text-decoration: underline;
-        }
-        p {
+nav li ul li a:hover {
+    text-decoration: underline;
+}
+p {
     font-size: 1.2rem;
     line-height: 1.6;
 }

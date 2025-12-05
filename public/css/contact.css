@@ -6,6 +6,21 @@
     --accent: #1f2839;
     --text: #000;
 }
+
+:root[data-theme="dark"] {
+    --primary: #1f2839;
+    --secondary: #111827;
+    --accent: #f8f1ff;
+    --text: #ffffff;
+}
+
+.theme-toggle {
+    background-color: var(--accent);
+    color: var(--primary);
+    border: solid var(--primary) 2px;
+    font-weight: 600;
+}
+
 html {
     font-family: "Ubuntu", sans-serif;
     background-color: var(--primary);
@@ -104,10 +119,11 @@ p {
     justify-content: space-between;
     gap: 10px;
 }
-btn-primary, .btn.btn-primary {
-    background: var(--accent) ; 
+btn-primary,
+.btn.btn-primary {
+    background: var(--accent);
     border: none;
-    color: var(--primary) ;
+    color: var(--primary);
     padding: 10px 22px;
     border-radius: 999px;
     font-weight: 600;
@@ -115,12 +131,12 @@ btn-primary, .btn.btn-primary {
     font-size: 0.95rem;
 }
 .btn-primary:hover {
-    background: #131a28 !important; 
+    background: #131a28 !important;
 }
 .product-card {
     width: 100%;
     max-width: 360px;
-    margin: 0 auto;   
+    margin: 0 auto;
 }
 .contact-hero {
     background: var(--primary);
@@ -180,5 +196,3 @@ btn-primary, .btn.btn-primary {
         padding: 24px 20px 40px;
     }
 }
-
-

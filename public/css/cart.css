@@ -7,6 +7,20 @@
     --text: #000;
 }
 
+:root[data-theme="dark"] {
+    --primary: #1f2839;
+    --secondary: #111827;
+    --accent: #f8f1ff;
+    --text: #ffffff;
+}
+
+.theme-toggle {
+    background-color: var(--accent);
+    color: var(--primary);
+    border: solid var(--primary) 2px;
+    font-weight: 600;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -125,7 +139,7 @@ nav li ul li a:hover {
 #cart-total-container {
     gap: 20px;
 }
-form.inlineForm button.smallBtn{
+form.inlineForm button.smallBtn {
     width: 25px !important;
     padding: 2px 5px !important;
     font-size: 14px !important;

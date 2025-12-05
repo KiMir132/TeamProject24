@@ -38,6 +38,12 @@
         <li>
             <a href="{{ route('cart') }}">Cart</a>
         </li>
+
+        <li>
+        <button id="theme-toggle" class="theme-toggle">
+            Mode Toggle
+        </button>
+        <li>
     </ul>
 </nav>
   <section class="contact-hero">

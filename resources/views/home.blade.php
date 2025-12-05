@@ -46,6 +46,11 @@
         <li>
             <a href="{{ route('cart') }}">Cart</a>
         </li>
+        <li>
+        <button id="theme-toggle" class="theme-toggle">
+            Mode Toggle
+        </button>
+        <li>
     </ul>
     </nav>
     {{-- Hero Section --}}
@@ -188,5 +193,6 @@
     </footer>
 
     <script src="{{ asset('js/zoom.js') }}"></script>
+    <script src="{{ asset('js/lightdark.js') }}"></script>
 </body>
 </html>

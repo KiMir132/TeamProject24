@@ -9,7 +9,8 @@
 
     <h1>Checkout</h1>
 
-    <form action="/process-order" method="post">
+    <form action="{{ route('checkout.process') }}" method="post">
+        @csrf
         
         <section id="order-summary">
             <h2>Order Summary</h2>

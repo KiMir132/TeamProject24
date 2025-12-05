@@ -29,7 +29,9 @@ class LoginController extends Controller
                 ->with('status','Successfully Logged in');
         }
 
-        return back()->withInput();
+    return back()
+     ->withErrors(['email' => 'Invalid email or password'])
+     ->withInput();
     }
 
     public function logout(): RedirectResponse

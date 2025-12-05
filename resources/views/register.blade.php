@@ -51,6 +51,15 @@
         @csrf
 
         <h1>Register</h1>
+         @if ($errors->any())
+          <div class="errors" style="color:red; margin-bottom:10px;">
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+         </div>
+       @endif
 
         
         <div class="input-box">

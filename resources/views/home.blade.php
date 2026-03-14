@@ -1,198 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Quipment</title>
+@extends('layouts.app')
+
+@section('title', 'E-Quipment – Quality Hardware')
+
+@section('styles')
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-</head>
+@endsection
 
-<body>
-    <nav>
-    <ul>
-        <li>
-            <a href="{{ url('/') }}">Home</a>
-        </li>
+@section('content')
 
-        
-        <li>
-            <a href="#">User ▾</a>
-            <ul>
-                <li><a href="{{ route('register') }}">Registration</a></li>
-                <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="{{ route('orders') }}">Orders history</a></li>
-            </ul>
-        </li>
-
-       
-        <li>
-            <a href="#">Information ▾</a>
-            <ul>
-                <li><a href="{{ route('about') }}">About Us</a></li>
-                <li><a href="{{ route('contact') }}">Contact Us</a></li>
-                <li><a href="#">Terms &amp; Conditions</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-            </ul>
-        </li>
-
-        
-        <li>
-            <a href="#">Support ▾</a>
-            <ul>
-                <li><a href="#">Live chat</a></li>
-                <li><a href="#">Help desk / Feedback</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="{{ route('cart') }}">Cart</a>
-        </li>
-        <li>
-        <button id="theme-toggle" class="theme-toggle">
-            Mode Toggle
-        </button>
-        <li>
-    </ul>
-    </nav>
-    {{-- Hero Section --}}
+   
     <section class="hero">
-        <div class="hero-text">
-            <div class="hero-eyebrow">Professional hardware supplier</div>
-            <h1 class="hero-title">Quality tools and hardware for every job.</h1>
-
-            <div class="hero-cta">
-                <a href="#products">
-                    <button class="btn-primary">Shop featured hardware</button>
-                </a>
-            </div>
-
-            <div class="hero-badges">
-                <div class="hero-badge-item">
-                    <div class="hero-badge-dot"></div>
-                    <span>Fast UK delivery</span>
+        <div class="hero-inner">
+            <div class="hero-text">
+                <div class="hero-eyebrow">Professional hardware supplier</div>
+                <h1 class="hero-title">Build something<br><span class="hero-title-accent">extraordinary.</span></h1>
+                <p class="hero-subtitle">Premium PC components, peripherals and networking gear — delivered fast across the UK.</p>
+                <div class="hero-cta">
+                    <a href="{{ route('products.index') }}" class="btn-primary">Shop our products</a>
+                    <a href="{{ route('about') }}" class="btn-ghost">Learn about us</a>
                 </div>
-                <div class="hero-badge-item">
-                    <div class="hero-badge-dot"></div>
-                    <span>Trusted by contractors</span>
-                </div>
-                <div class="hero-badge-item">
-                    <div class="hero-badge-dot"></div>
-                    <span>30-day returns</span>
+                <div class="hero-badges">
+                    <div class="hero-badge-item"><div class="hero-badge-dot"></div><span>Fast UK delivery</span></div>
+                    <div class="hero-badge-item"><div class="hero-badge-dot"></div><span>Trusted by contractors</span></div>
+                    <div class="hero-badge-item"><div class="hero-badge-dot"></div><span>30-day returns</span></div>
                 </div>
             </div>
+           
         </div>
     </section>
 
-    {{-- Main Content --}}
+   
+
     <main class="page-content">
 
-        {{-- Search / Filter --}}
-        <section class="search-panel">
-            <div class="search-panel-title">Find the right hardware</div>
-            <form action="{{ route('products.search') }}" method="GET">
-                <div class="search-row">
-                    <div class="search-field-group">
-                        <label for="search-q">Search</label>
-                        <input
-                            id="search-q"
-                            class="search-input"
-                            type="text"
-                            name="q"
-                            placeholder="Search cpu, capture cards, gpu..."
-                            value="{{ request('q') }}"
-                        >
-                    </div>
-
-                    <div class="search-field-group">
-                        <label for="min-price">Min price (£)</label>
-                        <input
-                            id="min-price"
-                            class="search-input"
-                            type="number"
-                            name="min_price"
-                            placeholder="0"
-                            min="0"
-                            value="{{ request('min_price') }}"
-                        >
-                    </div>
-
-                    <div class="search-field-group">
-                        <label for="max-price">Max price (£)</label>
-                        <input
-                            id="max-price"
-                            class="search-input"
-                            type="number"
-                            name="max_price"
-                            placeholder="500"
-                            min="0"
-                            value="{{ request('max_price') }}"
-                        >
-                    </div>
-
-                    <div class="search-button">
-                        <button type="submit" class="btn-primary">
-                            Search
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </section>
-
-        {{-- Products --}}
-        <section id="products">
-            <div class="products-header">
-                <h2>Featured Products</h2>
-                <span>
-                    @if($products->count())
-                        Showing {{ $products->count() }} item(s)
-                    @else
-                        No products found. Try adjusting your search.
-                    @endif
-                </span>
+        
+        
+        <section class="section-block">
+            <div class="section-header">
+                <h2>Browse by Category</h2>
+                <a href="{{ route('products.index') }}" class="view-all-link">View all →</a>
             </div>
-
-            @if($products->count())
-                <div class="product-grid">
-                    @foreach($products as $product)
-                        <div class="product-card">
-                            <div>
-                                <div class="product-name">
-                                    {{ $product->Name }}
-                                </div>
-                                <div class="product-description">
-                                    {{ $product->Description }}
-                                </div>
-                            </div>
-
-                            <div class="product-bottom">
-                                <div class="product-price">
-                                    £{{ number_format($product->Price, 2) }}
-                                    <span>excl. VAT</span>
-                                </div>
-
-                                <form method="POST" action="{{ route('cart.add', $product->ProductID) }}">
-                                    @csrf
-                                    <button type="submit" class="btn-add-cart">
-                                        Add to cart
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
+            <div class="category-grid">
+                @foreach($categories as $cat)
+                    @php
+                        $images = [
+                            'CPU'          => 'cpu.png',
+                            
+                            'RAM'          => 'ram.png',
+                            
+                           
+                            'Case'         => 'case.png',
+                            'Monitor'      => 'monitor.png',
+                            
+                        ];
+                        $img = $images[$cat] ?? 'default.png';
+                    @endphp
+                    <a href="{{ route('products.search', ['type' => $cat]) }}" class="category-card"
+                       style="background-image: url('{{ asset('images/categories/' . $img) }}')">
+                        <span class="category-card-label">{{ $cat }}</span>
+                    </a>
+                @endforeach
+            </div>
         </section>
+
+       
+
+       
+        <section class="section-block why-section">
+            <div class="section-header centered">
+                <h2>Why Choose E-Quipment?</h2>
+                <p class="section-subhead">We make PC building simple, accessible, and enjoyable.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">✅</div>
+                    <h3>Curated Selection</h3>
+                    <p>Every product in our store is hand-picked and tested against quality standards — no filler, only parts that perform.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">💬</div>
+                    <h3>Expert Guidance</h3>
+                    <p>Not sure what you need? Our support team knows hardware inside-out and is ready to help with your build.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">📦</div>
+                    <h3>Fast UK Shipping</h3>
+                    <p>Orders dispatched quickly with reliable courier partners. Free delivery on qualifying orders over £50.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🔄</div>
+                    <h3>Easy Returns</h3>
+                    <p>Changed your mind? Our 30-day no-fuss returns policy means you can shop with confidence.</p>
+                </div>
+            </div>
+        </section>
+
+      
+        @guest
+        <section class="cta-banner">
+            <div class="cta-banner-inner">
+                <div>
+                    <h2 class="cta-title">Ready to start building?</h2>
+                    <p class="cta-sub">Create an account to save your cart, track orders and get personalised recommendations.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="{{ route('register') }}" class="btn-primary">Create account</a>
+                    <a href="{{ route('login') }}" class="btn-ghost-dark">Log in</a>
+                </div>
+            </div>
+        </section>
+        @endguest
 
     </main>
 
-    {{-- Footer --}}
-    <footer class="footer" id="contact">
-        <div class="footer-inner">
-            <div>© {{ date('Y') }} E-Quipment. All rights reserved.</div>
-            <div>Need help? Email E-Quipment123@gmail.com</div>
-        </div>
-    </footer>
-
-    <script src="{{ asset('js/zoom.js') }}"></script>
-    <script src="{{ asset('js/lightdark.js') }}"></script>
-</body>
-</html>
+@endsection

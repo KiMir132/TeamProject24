@@ -15,21 +15,23 @@ class RegistrationController extends Controller
         return view('register');
     }
 
-    public function validateForm(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'name' => 'required|string|max:50',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|min:8|confirmed'
-        ]);
+  public function validateForm(Request $request): RedirectResponse
+{
+    $request->validate([
+        'name' => 'required|string|max:50',
+        'email' => 'required|string|email|unique:users',
+        'password' => 'required|string|min:8|confirmed'
+    ]);
 
-        $user = User::Create([ /* This Adds to database*/
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+    $user = User::Create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password)
+    ]);
 
-        return redirect('/')
-            ->with('status', 'Successfully registered an account');
-    }
+    auth()->login($user);
+
+    return redirect('/')
+        ->with('status', 'Successfully registered an account');
+}
 }

@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+
+:root {
+    --primary:   #f8f1ff;
+    --secondary: #ffffff;
+    --accent:    #1f2839;
+    --text:      #000000;
+    --text-muted:#6b7280;
+    --border:    #e5e7eb;
+    --card-shadow: 0 8px 20px rgba(15,23,42,0.06);
+}
+
+:root[data-theme="dark"] {
+    --primary:   #1f2839;
+    --secondary: #111827;
+    --accent:    #f8f1ff;
+    --text:      #ffffff;
+    --text-muted:#9ca3af;
+    --border:    #374151;
+    --card-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    font-family: "Ubuntu", sans-serif;
+    background: var(--primary);
+}
+
+body {
+    margin: 0;
+    background: var(--primary);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a { text-decoration: none; color: inherit; }
+
+
+.navbar {
+    background: var(--accent);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+
+.navbar-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    height: 70px;
+}
+
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    color: #568BAD;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+
+.navbar-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.navbar-links > li {
+    position: relative;
+}
+
+.navbar-links > li > a {
+    display: inline-block;
+    color: rgba(255,255,255,0.82);
+    font-weight: 500;
+    font-size: 0.92rem;
+    padding: 0 14px;
+    line-height: 70px;
+    white-space: nowrap;
+    transition: color 0.15s;
+    letter-spacing: 0.01em;
+}
+
+.navbar-links > li > a:hover,
+.navbar-links > li > a.active-nav {
+    color: #ffffff;
+}
+
+.navbar-links > li > a.active-nav {
+    border-bottom: 3px solid #ffffff;
+}
+
+/* Dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1a2435;
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    min-width: 200px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.3);
+    z-index: 300;
+}
+
+.dropdown-right {
+    left: auto;
+    right: 0;
+}
+
+.has-dropdown:hover > .dropdown,
+.nav-user:hover > .dropdown { display: block; }
+
+.dropdown li a {
+    display: block;
+    color: rgba(255,255,255,0.78);
+    padding: 9px 18px;
+    font-size: 0.88rem;
+    font-weight: 400;
+    transition: background 0.12s, color 0.12s;
+}
+
+.dropdown li a:hover {
+    background: rgba(255,255,255,0.07);
+    color: #fff;
+}
+
+/* ── Right: Auth + Cart + Toggle ── */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.nav-auth-link {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 7px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: border-color 0.15s, color 0.15s;
+    white-space: nowrap;
+}
+
+.nav-auth-link:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+.nav-user {
+    position: relative;
+}
+
+.nav-cart {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: rgba(255,255,255,0.85);
+    font-size: 1.1rem;
+    padding: 6px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: border-color 0.15s, color 0.15s;
+    position: relative;
+}
+
+.nav-cart:hover {
+    border-color: rgba(255,255,255,0.6);
+    color: #fff;
+}
+
+/* Cart badge */
+.cart-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ef4444;
+    color: #fff;
+    font-size: 0.62rem;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 999px;
+    line-height: 1;
+}
+
+/* Theme toggle */
+.theme-toggle {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.78rem;
+    padding: 6px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: "Ubuntu", sans-serif;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.theme-toggle:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+/* ── Footer ── */
+.footer {
+    padding: 24px 40px;
+    background: #111827;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    margin-top: auto;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.footer a { color: #d1d5db; }
+.footer a:hover { color: #fff; }
+
+/* ── Shared utilities ── */
+.btn-primary {
+    background: var(--accent);
+    border: none;
+    color: var(--primary);
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-family: "Ubuntu", sans-serif;
+    display: inline-block;
+    transition: opacity 0.15s;
+}
+.btn-primary:hover { opacity: 0.85; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .navbar-inner {
+        grid-template-columns: 1fr auto;
+        padding: 0 16px;
+    }
+    .navbar-links { display: none; }
+    .footer { padding: 20px 16px; }
+}

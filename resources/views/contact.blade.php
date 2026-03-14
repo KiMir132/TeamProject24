@@ -1,87 +1,78 @@
-<html>
-<head>
-    <title>Home</title>
+@extends('layouts.app')
+
+@section('title', 'Contact Us – E-Quipment')
+
+@section('styles')
     <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">  
-</head>
-<body>
-<nav>
-    <ul>
-        <li>
-            <a href="{{ url('/') }}">Home</a>
-        </li>
-        <li>
-            <a href="#">User ▾</a>
-            <ul>
-                <li><a href="{{ route('register') }}">Registration</a></li>
-                <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="{{ route('orders') }}">Orders history</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">Information ▾</a>
-            <ul>
-            <li><a href="{{ route('about') }}">About Us</a></li>
-            <li><a href="{{ route('contact') }}">Contact Us</a></li>
-            <li><a href="#">Terms &amp; Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            </ul>
-        </li>    
-        <li>
-            <a href="#">Support ▾</a>
-            <ul>
-            <li><a href="#">Live chat</a></li>
-            <li><a href="#">Help desk / Feedback</a></li>
-            </ul>
-        </li>
+@endsection
 
-        <li>
-            <a href="{{ route('cart') }}">Cart</a>
-        </li>
+@section('content')
 
-        <li>
-        <button id="theme-toggle" class="theme-toggle">
-            Mode Toggle
-        </button>
-        <li>
-    </ul>
-</nav>
-  <section class="contact-hero">
-    <div class="contact-hero-inner">
-    <h1>Contact Us</h1>
-    <p>Need help? Send us a message and we will assist you further.</p>
-    </div>
-  </section>
-   <div class="page-content contact-form-wrapper"> 
-    <div class="container mt-5">
-    <form id="contactForm">
-    <div class="mb-3">
-        <label for="name" class="form-label">Your Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+    {{-- Hero --}}
+    <section class="contact-hero">
+        <div class="contact-hero-inner">
+            <div class="contact-hero-eyebrow">We're here to help</div>
+            <h1>Contact Us</h1>
+            <p>Have a question about an order, a product, or your account? Send us a message and we'll get back to you promptly.</p>
         </div>
-        <div class="mb-3">
-        <label for="email" class="form-label">Your Email</label>
-        <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
-        </div>
-        <div class="mb-3">
-        <label for="message" class="form-label">Your Message</label>
-        <textarea class="form-control" id="message" rows="5" placeholder="Your message" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit Message</button>
-    </form>
-    <div id="responseMessage" class="mt-3 text-success" style="display:none;">
-        Thank you! Your message has been forwarded to our team, we'll be in touch soon.
-    </div>
-</div>
-</div>
-<footer class="footer" id="contact">
-    <div class="footer-inner">
-    <div>© {{ date('Y') }} E-Quipment. All rights reserved.</div>
-    <div>Need help? Email E-Quipment123@gmail.com</div>
-    </div>
-</footer>
-<script src="{{asset('js/contact.js')}}"></script>
-</body>
-</html>
+    </section>
 
+    <div class="page-content contact-layout">
 
+        
+
+        {{-- Form --}}
+        <div class="contact-form-wrapper">
+            <div class="contact-form-header">
+                <h2>Send a Message</h2>
+                <p>Fill in the form below and our team will be in touch.</p>
+            </div>
+
+            <form id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="Ahmed Rawi" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" placeholder="Ahmed@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject">
+                        <option value="">Select a topic...</option>
+                        <option value="order">Order enquiry</option>
+                        <option value="product">Product question</option>
+                        <option value="return">Returns & refunds</option>
+                        <option value="technical">Technical support</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary contact-submit">Send Message →</button>
+            </form>
+
+            <div id="responseMessage">
+                <div class="response-icon">✅</div>
+                <div>
+                    <strong>Message sent!</strong><br>
+                    Thank you for reaching out. Our team will get back to you within 24 hours.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/contact.js') }}"></script>
+@endsection

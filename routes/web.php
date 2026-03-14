@@ -9,8 +9,10 @@ use App\Models\Product;
 use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
-     $products = Product::orderBy('Name')->take(10)->get();
-    return view('home', compact('products'));
+    $products      = Product::orderBy('Price', 'desc')->take(8)->get();
+    $categories = collect(['Case', 'CPU', 'Monitor', 'RAM']);
+    $totalProducts = Product::count();
+    return view('home', compact('products', 'categories', 'totalProducts'));
 });
 
 Route::get('register', [RegistrationController::class, 'showForm'])
@@ -72,4 +74,3 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
-

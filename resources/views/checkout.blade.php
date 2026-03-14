@@ -1,135 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hardware Checkout</title>
-    <link rel="stylesheet" href="checkout.css">
-</head>
-<body>
+@extends('layouts.app')
 
-    <h1>Checkout</h1>
+@section('title', 'Checkout – E-Quipment')
 
-    <form action="{{ route('checkout.process') }}" method="post">
-        @csrf
-        
-        <section id="order-summary">
-            <h2>Order Summary</h2>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="3" style="text-align: right;">Subtotal:</td>
-                        <td>£0.00</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" style="text-align: right;">Shipping:</td>
-                        <td>£0.00</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" style="text-align: right;">**Order Total:**</td>
-                        <td>**£                      0.00**</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </section>
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/checkout.css') }}">
+@endsection
 
-        <hr>
+@section('content')
 
-        <section id="shipping-info">
-            <h2>Shipping Information</h2>
-            
-            <label for="full-name">Full Name:</label><br>
-            <input type="text" id="full-name" name="full_name" required><br><br>
+    <section class="checkout-page-header">
+        <div class="checkout-page-header-inner">
+            <div class="checkout-eyebrow">E-Quipment</div>
+            <h1>Checkout</h1>
+        </div>
+    </section>
 
-            <label for="address-line1">Address Line 1:</label><br>
-            <input type="text" id="address-line1" name="address_line1" required><br><br>
-            
-            <label for="address-line2">Address Line 2 (Optional):</label><br>
-            <input type="text" id="address-line2" name="address_line2"><br><br>
-            
-            <label for="city">City:</label><br>
-            <input type="text" id="city" name="city" required><br><br>
-            
-            <label for="state">State/Province:</label><br>
-            <input type="text" id="state" name="state" required><br><br>
-            
-            <label for="zip">Zip/Postal Code:</label><br>
-            <input type="text" id="zip" name="zip" required><br><br>
-            
-            <label for="country">Country:</label><br>
-            <select id="country" name="country" required>
-                <option value="usa">United States</option>
-                <option value="can">Canada</option>
-                <option value="gbr">United Kingdom</option>
-                </select><br><br>
-            
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-            
-            <label for="phone">Phone (Optional):</label><br>
-            <input type="tel" id="phone" name="phone"><br><br>
-        </section>
+    <div class="checkout-layout">
 
-        <hr>
+        {{-- Left: Form --}}
+        <div class="checkout-form-col">
+            <form action="{{ route('checkout.process') }}" method="POST">
+                @csrf
 
-        <section id="payment-info">
-            <h2>Payment Information</h2>
-            
-            <fieldset>
-                <legend>Payment Method:</legend>
-                
-                <input type="radio" id="credit-card" name="payment_method" value="credit_card" checked>
-                <label for="credit-card">Credit Card</label><br>
-                
-                <input type="radio" id="paypal" name="payment_method" value="paypal">
-                <label for="paypal">PayPal</label><br>
-                
-                <input type="radio" id="bank-transfer" name="payment_method" value="bank_transfer">
-                <label for="bank-transfer">Bank Transfer</label><br>
-            </fieldset>
-            <br>
-            
-            <h3>Credit Card Details (if selected)</h3>
-            
-            <label for="card-number">Card Number:</label><br>
-            <input type="text" id="card-number" name="card_number" placeholder="XXXX XXXX XXXX XXXX"><br><br>
-            
-            <label for="card-name">Name on Card:</label><br>
-            <input type="text" id="card-name" name="card_name"><br><br>
-            
-            <label for="expiry-date">Expiry Date:</label><br>
-            <input type="text" id="expiry-date" name="expiry_date" placeholder="MM/YY"><br><br>
-            
-            <label for="cvv">CVV:</label><br>
-            <input type="text" id="cvv" name="cvv" size="4" maxlength="4"><br><br>
-            
-        </section>
+                <div class="checkout-section">
+                    <div class="checkout-section-title">
+                        <span class="checkout-step">1</span> Shipping Information
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="full_name" placeholder="John Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Address Line 1</label>
+                            <input type="text" name="address_line1" placeholder="123 High Street" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Address Line 2 <span class="optional">(Optional)</span></label>
+                            <input type="text" name="address_line2" placeholder="Apartment, suite, etc.">
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" name="city" placeholder="London" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Postcode</label>
+                            <input type="text" name="zip" placeholder="SW1A 1AA" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone <span class="optional">(Optional)</span></label>
+                            <input type="tel" name="phone" placeholder="+44 7700 900000">
+                        </div>
+                    </div>
+                </div>
 
-        <hr>
+                <div class="checkout-section">
+                    <div class="checkout-section-title">
+                        <span class="checkout-step">2</span> Payment Method
+                    </div>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment_method" value="credit_card" checked>
+                            <span class="payment-option-box">💳 Credit Card</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment_method" value="paypal">
+                            <span class="payment-option-box">🅿️ PayPal</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment_method" value="bank_transfer">
+                            <span class="payment-option-box">🏦 Bank Transfer</span>
+                        </label>
+                    </div>
+                    <div class="form-grid" style="margin-top:18px;">
+                        <div class="form-group full-width">
+                            <label>Card Number</label>
+                            <input type="text" name="card_number" placeholder="XXXX XXXX XXXX XXXX">
+                        </div>
+                        <div class="form-group">
+                            <label>Expiry Date</label>
+                            <input type="text" name="expiry_date" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group">
+                            <label>CVV</label>
+                            <input type="text" name="cvv" maxlength="4" placeholder="•••">
+                        </div>
+                    </div>
+                </div>
 
-        <section id="final-actions">
-            <input type="checkbox" id="terms" name="terms" required>
-            <label for="terms">I agree to the terms and conditions</label><br><br>
-            
-            <button type="submit">Place Order</button>
-        </section>
+                <div class="checkout-section">
+                    <label class="terms-label">
+                        <input type="checkbox" name="terms" required>
+                        I agree to the <a href="#" class="terms-link">terms and conditions</a>
+                    </label>
+                    <button type="submit" class="btn-primary btn-place-order">Place Order →</button>
+                </div>
 
-    </form>
+            </form>
+        </div>
 
-</body>
-</html>
+        {{-- Right: Order Summary --}}
+        <div class="checkout-summary-col">
+            <div class="checkout-summary-box">
+                <h2>Order Summary</h2>
+
+                <div class="checkout-summary-items">
+                    @foreach($cart->items as $item)
+                        <div class="checkout-summary-item">
+                            <div class="checkout-summary-item-info">
+                                <span class="checkout-summary-item-name">{{ $item->product->Name }}</span>
+                                <span class="checkout-summary-item-qty">× {{ $item->Quantity }}</span>
+                            </div>
+                            <span class="checkout-summary-item-price">£{{ number_format($item->Price, 2) }}</span>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="checkout-summary-divider"></div>
+
+                <div class="checkout-summary-row">
+                    <span>Subtotal</span>
+                    <span>£{{ number_format($cart->items->sum('Price'), 2) }}</span>
+                </div>
+                <div class="checkout-summary-row muted">
+                    <span>Shipping</span>
+                    <span>{{ $cart->items->sum('Price') >= 50 ? 'Free' : '£4.99' }}</span>
+                </div>
+
+                <div class="checkout-summary-divider"></div>
+
+                <div class="checkout-summary-row total">
+                    <span>Total</span>
+                    <span>£{{ number_format($cart->items->sum('Price') >= 50 ? $cart->items->sum('Price') : $cart->items->sum('Price') + 4.99, 2) }}</span>
+                </div>
+
+               
+            </div>
+        </div>
+
+    </div>
+
+@endsection

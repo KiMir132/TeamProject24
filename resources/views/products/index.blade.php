@@ -1,70 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products – E-Quipment</title>
+@extends('layouts.app')
+
+@section('title', 'Products – E-Quipment')
+
+@section('styles')
     <link rel="stylesheet" href="{{ asset('css/productlistings.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
+@endsection
 
-    {{-- Nav --}}
-    <nav>
-        <ul>
-            <li><a href="{{ url('/') }}">Home</a></li>
+@section('content')
 
-            <li>
-                <a href="#" class="active-nav">Products ▾</a>
-                <ul>
-                    <li><a href="{{ route('products.index') }}">All Products</a></li>
-                    @foreach($types as $type)
-                        <li><a href="{{ route('products.search', ['type' => $type]) }}">{{ $type }}</a></li>
-                    @endforeach
-                </ul>
-            </li>
-
-            <li>
-                <a href="#">User ▾</a>
-                <ul>
-                    @auth
-                        <li><a href="{{ route('orders') }}">Order History</a></li>
-                        <li><a href="{{ route('logout') }}">Logout</a></li>
-                    @else
-                        <li><a href="{{ route('register') }}">Register</a></li>
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                    @endauth
-                </ul>
-            </li>
-
-            <li>
-                <a href="#">Information ▾</a>
-                <ul>
-                    <li><a href="{{ route('about') }}">About Us</a></li>
-                    <li><a href="{{ route('contact') }}">Contact Us</a></li>
-                    <li><a href="#">Terms &amp; Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="#">Support ▾</a>
-                <ul>
-                    <li><a href="#">Live Chat</a></li>
-                    <li><a href="#">Help Desk / Feedback</a></li>
-                </ul>
-            </li>
-
-            <li><a href="{{ route('cart') }}">Cart</a></li>
-
-            <li>
-                <button id="theme-toggle" class="theme-toggle">Mode Toggle</button>
-            </li>
-        </ul>
-    </nav>
-
-    {{-- Page Header --}}
     <section class="page-header">
         <div class="page-header-inner">
             <div class="page-header-eyebrow">E-Quipment Store</div>
@@ -73,10 +16,8 @@
         </div>
     </section>
 
-    {{-- Main Content --}}
     <main class="page-content">
 
-        {{-- Search & Filter Panel --}}
         <section class="search-panel">
             <div class="search-panel-title">Filter &amp; Search</div>
             <form action="{{ route('products.search') }}" method="GET">
@@ -86,7 +27,6 @@
                         <input id="search-q" class="search-input" type="text" name="q"
                             placeholder="Search GPU, SSD, CPU..." value="{{ request('q') }}">
                     </div>
-
                     <div class="search-field-group">
                         <label for="type-filter">Category</label>
                         <select id="type-filter" class="search-input" name="type">
@@ -98,19 +38,16 @@
                             @endforeach
                         </select>
                     </div>
-
                     <div class="search-field-group">
                         <label for="min-price">Min Price (£)</label>
                         <input id="min-price" class="search-input" type="number" name="min_price"
                             placeholder="0" min="0" value="{{ request('min_price') }}">
                     </div>
-
                     <div class="search-field-group">
                         <label for="max-price">Max Price (£)</label>
                         <input id="max-price" class="search-input" type="number" name="max_price"
                             placeholder="1500" min="0" value="{{ request('max_price') }}">
                     </div>
-
                     <div class="search-button">
                         <button type="submit" class="btn-primary">Search</button>
                     </div>
@@ -118,7 +55,6 @@
             </form>
         </section>
 
-        {{-- Category Pills --}}
         <div class="categories">
             <a href="{{ route('products.index') }}" class="category-pill {{ !request('type') ? 'active' : '' }}">All</a>
             @foreach($types as $type)
@@ -129,13 +65,11 @@
             @endforeach
         </div>
 
-        {{-- Products Header --}}
         <div class="products-header">
             <h2>All Products</h2>
             <span>Showing {{ $products->firstItem() }}–{{ $products->lastItem() }} of {{ $products->total() }} items</span>
         </div>
 
-        {{-- Product Grid --}}
         @if($products->count())
             <div class="product-grid">
                 @foreach($products as $product)
@@ -143,23 +77,17 @@
                         <div class="product-type-badge">{{ $product->Type }}</div>
                         <div class="product-name">{{ $product->Name }}</div>
                         <div class="product-description">{{ $product->Description }}</div>
-
                         <div class="product-stock {{ $product->Quantity > 10 ? 'in-stock' : ($product->Quantity > 0 ? 'low-stock' : 'out-of-stock') }}">
-                            @if($product->Quantity > 10)
-                                ● In stock
-                            @elseif($product->Quantity > 0)
-                                ● Only {{ $product->Quantity }} left
-                            @else
-                                ● Out of stock
+                            @if($product->Quantity > 10) ● In stock
+                            @elseif($product->Quantity > 0) ● Only {{ $product->Quantity }} left
+                            @else ● Out of stock
                             @endif
                         </div>
-
                         <div class="product-bottom">
                             <div class="product-price">
                                 £{{ number_format($product->Price, 2) }}
                                 <span>excl. VAT</span>
                             </div>
-
                             @if($product->Quantity > 0)
                                 @auth
                                     <form method="POST" action="{{ route('cart.add', $product->ProductID) }}">
@@ -176,12 +104,9 @@
                     </div>
                 @endforeach
             </div>
-
-            {{-- Pagination --}}
             <div class="pagination-wrapper">
                 {{ $products->links() }}
             </div>
-
         @else
             <div class="empty-state">
                 <div class="empty-icon">📦</div>
@@ -193,14 +118,4 @@
 
     </main>
 
-    {{-- Footer --}}
-    <footer class="footer">
-        <div class="footer-inner">
-            <div>© {{ date('Y') }} E-Quipment. All rights reserved.</div>
-            <div>Need help? Email E-Quipment123@gmail.com</div>
-        </div>
-    </footer>
-
-    <script src="{{ asset('js/lightdark.js') }}"></script>
-</body>
-</html>
+@endsection

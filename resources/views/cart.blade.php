@@ -1,108 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Quipment</title>
+@extends('layouts.app')
+
+@section('title', 'Your Cart – E-Quipment')
+
+@section('styles')
     <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
-</head>
+@endsection
 
-<body>
-    <nav>
-    <ul>
-        <li>
-            <a href="{{ url('/') }}">Home</a>
-        </li>
-        <li>
-            <a href="#">User ▾</a>
-            <ul>
-                <li><a href="{{ route('register') }}">Registration</a></li>
-                <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="{{ route('orders') }}">Orders history</a></li>
-            </ul>
-        </li>
+@section('content')
 
-        <li>
-            <a href="#">Information ▾</a>
-            <ul>
-                <li><a href="{{ route('about') }}">About Us</a></li>
-                <li><a href="{{ route('contact') }}">Contact Us</a></li>
-                <li><a href="#">Terms &amp; Conditions</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-            </ul>
-        </li>
-
-        
-        <li>
-            <a href="#">Support ▾</a>
-            <ul>
-                <li><a href="#">Live chat</a></li>
-                <li><a href="#">Help desk / Feedback</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="{{ route('cart') }}">Cart</a>
-        </li>
-
-        <li>
-        <button id="theme-toggle" class="theme-toggle">
-            Mode Toggle
-        </button>
-        <li>
-    </ul>
-    </nav>
-
-    <section id = "cart-section">
-        <div id = "cart-container">
-            <h1 class="cart-head">Your Cart</h1>
-            <div id="cart">
-                @if(!$cart || $cart->items->isEmpty())
-                    <p>Your cart is empty.</p>
-                @else
-                    @foreach($cart->items as $item)
-                        <div class="product">
-                            <div>
-                                <img alt="Product Image"/>
-                            </div>
-                            <div>
-                            <strong>{{ $item->product->Name }}</strong><br>
-                            Quantity: 
-                            <form action="{{ route('cart.decrease', $item->product->ProductID) }}" method="post" class="inlineForm">
-                                @csrf
-                                @method('PATCH')
-                            <button type="submit" class="smallBtn">-</button>
-                            </form>
-                            {{ $item->Quantity }} 
-                            <form action="{{ route('cart.increase', $item->product->ProductID) }}" method="post" class="inlineForm">
-                                @csrf
-                                @method('PATCH')
-                            <button type="submit" class="smallBtn">+</button>
-                            </form>
-
-                            <br>
-                            Price: £{{ number_format($item->product->Price * $item->Quantity, 2)}}<br>
-                            </div>
-                            <div>
-                            <form action="{{ route('cart.remove', $item->product->ProductID) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Remove</button>
-                            </form>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-        </div>
-        <div id = "cart-total-container">
-            <h1 class="cart-head">Cart Total</h1>
-            <h3>Total: £{{ $cart->items->sum('Price') }}</h3>
-            <form action="{{ route('checkout.form') }}" method="get">
-                <button type="submit">Checkout</button>
-            </form>
+    <section class="cart-page-header">
+        <div class="cart-page-header-inner">
+            <div class="cart-header-eyebrow">E-Quipment</div>
+            <h1>Your Cart</h1>
+            @if(session('status'))
+                <p class="cart-status-msg">{{ session('status') }}</p>
+            @endif
         </div>
     </section>
-</body>
 
-</html>
+    <div class="cart-layout">
+
+        {{-- Items --}}
+        <div class="cart-items-panel">
+            @if(!$cart || $cart->items->isEmpty())
+                <div class="cart-empty">
+                    <div class="cart-empty-icon">🛒</div>
+                    <h3>Your cart is empty</h3>
+                    <p>Looks like you haven't added anything yet.</p>
+                    <a href="{{ route('products.index') }}" class="btn-primary">Browse products</a>
+                </div>
+            @else
+                <div class="cart-items-header">
+                    <span>Product</span>
+                    <span>Quantity</span>
+                    <span>Price</span>
+                    <span></span>
+                </div>
+
+                @foreach($cart->items as $item)
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-badge">{{ $item->product->Type }}</div>
+                            <div class="cart-item-name">{{ $item->product->Name }}</div>
+                            <div class="cart-item-unit">£{{ number_format($item->product->Price, 2) }} each</div>
+                        </div>
+
+                        <div class="cart-item-qty">
+                            <form action="{{ route('cart.decrease', $item->product->ProductID) }}" method="post" class="inlineForm">
+                                @csrf @method('PATCH')
+                                <button type="submit" class="qty-btn">−</button>
+                            </form>
+                            <span class="qty-value">{{ $item->Quantity }}</span>
+                            <form action="{{ route('cart.increase', $item->product->ProductID) }}" method="post" class="inlineForm">
+                                @csrf @method('PATCH')
+                                <button type="submit" class="qty-btn">+</button>
+                            </form>
+                        </div>
+
+                        <div class="cart-item-total">
+                            £{{ number_format($item->product->Price * $item->Quantity, 2) }}
+                        </div>
+
+                        <div class="cart-item-remove">
+                            <form action="{{ route('cart.remove', $item->product->ProductID) }}" method="post">
+                                @csrf @method('DELETE')
+                                <button type="submit" class="btn-remove" title="Remove">✕</button>
+                            </form>
+                        </div>
+                    </div>
+                @endforeach
+
+                <div class="cart-continue">
+                    <a href="{{ route('products.index') }}" class="btn-ghost">← Continue shopping</a>
+                </div>
+            @endif
+        </div>
+
+        {{-- Summary --}}
+        @if($cart && $cart->items->isNotEmpty())
+            <div class="cart-summary-panel">
+                <h2>Order Summary</h2>
+
+                <div class="summary-lines">
+                    @foreach($cart->items as $item)
+                        <div class="summary-line">
+                            <span>{{ $item->product->Name }} × {{ $item->Quantity }}</span>
+                            <span>£{{ number_format($item->product->Price * $item->Quantity, 2) }}</span>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span>£{{ number_format($cart->items->sum('Price'), 2) }}</span>
+                </div>
+
+                <div class="summary-note">Excluding VAT. Shipping calculated at checkout.</div>
+
+                <form action="{{ route('checkout.form') }}" method="get">
+                    <button type="submit" class="btn-primary btn-checkout">Proceed to Checkout →</button>
+                </form>
+            </div>
+        @endif
+
+    </div>
+
+@endsection

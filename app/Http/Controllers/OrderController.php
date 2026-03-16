@@ -16,4 +16,14 @@ class OrderController extends Controller
 
         return view('orders', compact('orders'));
     }
+
+    public function confirmation(Request $request, $id)
+    {
+        $order = Order::where('OrderID', $id)
+            ->where('UID', $request->user()->UID)
+            ->with('items.product')
+            ->firstOrFail();
+
+        return view('order-confirmation', compact('order'));
+    }
 }

@@ -14,7 +14,7 @@
     <nav class="navbar">
         <div class="navbar-inner">
 
-            {{-- LEFT: Logo --}}
+           
             <div class="navbar-left">
                 <a href="{{ url('/') }}" class="navbar-logo">
                     <img src="{{ asset('images/logo.png') }}" alt="E-Quipment" class="logo-img"
@@ -23,7 +23,7 @@
                 </a>
             </div>
 
-            {{-- CENTER: Main links --}}
+            
             <ul class="navbar-links">
                 <li>
                     <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active-nav' : '' }}">Home</a>
@@ -60,7 +60,7 @@
                 </li>
             </ul>
 
-            {{-- RIGHT: Auth + Cart + Theme --}}
+            
             <div class="navbar-right">
                 <button id="theme-toggle" class="theme-toggle" title="Toggle dark mode">☀ / ☾</button>
 
@@ -110,6 +110,12 @@
     </footer>
 
     <script src="{{ asset('js/lightdark.js') }}"></script>
+    
+    
+    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2026/02/26/14/20260226143645-K2KG2DID.js" defer></script>
+    
+    
     @yield('scripts')
 </body>
 </html>

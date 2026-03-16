@@ -10,7 +10,7 @@ use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     $products      = Product::orderBy('Price', 'desc')->take(8)->get();
-    $categories = collect(['Case', 'CPU', 'Monitor', 'RAM']);
+    $categories    = collect(['CPU', 'RAM', 'Case', 'Monitor']);
     $totalProducts = Product::count();
     return view('home', compact('products', 'categories', 'totalProducts'));
 });
@@ -64,8 +64,15 @@ Route::get('/products', [ProductController::class, 'index'])
 Route::get('/products/search', [ProductController::class, 'search'])
     ->name('products.search');
 
+Route::get('/products/{product}', [ProductController::class, 'show'])
+    ->name('products.show');
+
 Route::get('orders', [OrderController::class, 'showOrders'])
     ->name('orders')
+    ->middleware('auth');
+
+Route::get('orders/confirmation/{id}', [OrderController::class, 'confirmation'])
+    ->name('order.confirmation')
     ->middleware('auth');
 
 Route::get('/about', function () {

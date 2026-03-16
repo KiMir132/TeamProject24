@@ -74,6 +74,11 @@
             <div class="product-grid">
                 @foreach($products as $product)
                     <div class="product-card">
+                        <div class="product-card-img">
+                          <img src="{{ asset('images/products/' . $product->ProductID . '.jpg') }}"
+                             alt="{{ $product->Name }}"
+                              onerror="this.src='{{ asset('images/products/placeholder.jpg') }}'">
+                       </div>
                         <div class="product-type-badge">{{ $product->Type }}</div>
                         <div class="product-name">{{ $product->Name }}</div>
                         <div class="product-description">{{ $product->Description }}</div>
@@ -83,24 +88,14 @@
                             @else ● Out of stock
                             @endif
                         </div>
-                        <div class="product-bottom">
-                            <div class="product-price">
-                                £{{ number_format($product->Price, 2) }}
-                                <span>excl. VAT</span>
-                            </div>
-                            @if($product->Quantity > 0)
-                                @auth
-                                    <form method="POST" action="{{ route('cart.add', $product->ProductID) }}">
-                                        @csrf
-                                        <button type="submit" class="btn-add-cart">Add to cart</button>
-                                    </form>
-                                @else
-                                    <a href="{{ route('login') }}" class="btn-add-cart">Add to cart</a>
-                                @endauth
-                            @else
-                                <button class="btn-add-cart disabled" disabled>Out of stock</button>
-                            @endif
-                        </div>
+                     
+                            <div class="product-bottom">
+    <div class="product-price">
+        £{{ number_format($product->Price, 2) }}
+        <span>excl. VAT</span>
+    </div>
+    <a href="{{ route('products.show', $product->ProductID) }}" class="btn-add-cart">Shop →</a>
+</div>
                     </div>
                 @endforeach
             </div>

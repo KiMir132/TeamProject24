@@ -134,7 +134,7 @@ class CartController extends Controller
 
         $cart->items()->delete();
 
-        return redirect()->route('orders');
+        return redirect()->route('order.confirmation', $order->OrderID);
     }
 
     public function increase($productID)

@@ -37,7 +37,7 @@
     padding: 30px 40px 60px;
 }
 
-/* Search panel */
+
 .search-panel {
     background: var(--secondary);
     padding: 18px 20px;
@@ -91,7 +91,7 @@
 
 .search-button { flex: 0 0 auto; }
 
-/* Category pills */
+
 .categories {
     display: flex;
     flex-wrap: wrap;
@@ -119,7 +119,7 @@
 
 .category-pill.active { font-weight: 600; }
 
-/* Products header */
+
 .products-header {
     display: flex;
     justify-content: space-between;
@@ -134,14 +134,14 @@
     color: var(--text-muted);
 }
 
-/* Product grid */
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 18px;
 }
 
-/* Product card */
+
 .product-card {
     background: var(--secondary);
     border-radius: 18px;
@@ -235,14 +235,14 @@
     cursor: not-allowed;
 }
 
-/* Pagination */
+
 .pagination-wrapper {
     margin-top: 32px;
     display: flex;
     justify-content: center;
 }
 
-/* Empty state */
+
 .empty-state {
     text-align: center;
     padding: 60px 20px;
@@ -258,6 +258,23 @@
 }
 
 .empty-state p { margin: 0 0 20px; font-size: 0.95rem; }
+
+.product-card-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: var(--primary);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+}
+
+.product-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+}
 
 @media (max-width: 768px) {
     .page-header { padding: 28px 20px 20px; }

@@ -41,4 +41,14 @@ class ProductController extends Controller
             'types'      => $types,
         ]);
     }
+     public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        $related = Product::where('Type', $product->Type)
+            ->where('ProductID', '!=', $product->ProductID)
+            ->take(4)
+            ->get();
+
+        return view('products.show', compact('product', 'related'));
+    }
 }

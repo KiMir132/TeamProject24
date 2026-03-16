@@ -118,10 +118,15 @@ class CartController extends Controller
             return redirect()->back()->withErrors('Your cart is empty.');
         }
 
-        $order = Order::create([
-            'UID'       => $user->UID,
-            'Order_date'=> now(),
-        ]);
+       $order = Order::create([
+    'UID'        => $user->UID,
+    'Order_date' => now(),
+    'full_name'  => $request->full_name,
+    'email'      => $request->email,
+    'address_line1' => $request->address_line1,
+    'city'       => $request->city,
+    'zip'        => $request->zip,
+]);
 
         foreach ($cart->items as $item) {
             OrderItem::create([

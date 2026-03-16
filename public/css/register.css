@@ -1,5 +1,5 @@
 
-/* register.css — page-specific styles only */
+
 
 .register-page {
     display: flex;
@@ -110,4 +110,53 @@
 
 .errors p {
     margin: 4px 0;
+}
+
+.password-strength {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: -10px 0 10px;
+}
+
+.strength-bar {
+    flex: 1;
+    height: 5px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.strength-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    min-width: 80px;
+    text-align: right;
+    color: var(--text-muted);
+}
+
+.password-rules {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.password-rules li {
+    font-size: 0.78rem;
+    color: #ef4444;
+    transition: color 0.2s;
+}
+
+.password-rules li.passed {
+    color: #22c55e;
 }

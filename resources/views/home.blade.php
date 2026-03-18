@@ -65,36 +65,22 @@
 
        
 
-       
-        <section class="section-block why-section">
-            <div class="section-header centered">
-                <h2>Why Choose E-Quipment?</h2>
-                <p class="section-subhead">We make PC building simple, accessible, and enjoyable.</p>
-            </div>
-            <div class="why-grid">
-                <div class="why-card">
-                    <div class="why-icon">✅</div>
-                    <h3>Curated Selection</h3>
-                    <p>Every product in our store is hand-picked and tested against quality standards — no filler, only parts that perform.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">💬</div>
-                    <h3>Expert Guidance</h3>
-                    <p>Not sure what you need? Our support team knows hardware inside-out and is ready to help with your build.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">📦</div>
-                    <h3>Fast UK Shipping</h3>
-                    <p>Orders dispatched quickly with reliable courier partners. Free delivery on qualifying orders over £50.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">🔄</div>
-                    <h3>Easy Returns</h3>
-                    <p>Changed your mind? Our 30-day no-fuss returns policy means you can shop with confidence.</p>
-                </div>
-            </div>
-        </section>
-
+     @auth
+        <section class="section-block">
+          <div class="support-banner">
+            <div class="support-banner-text">
+              <h2>We're here when you need us.</h2>
+              <p>
+                 Have a question about a product or your order? Get in touch with our team directly, or head to our Help Desk for FAQs, troubleshooting guides, and to submit a support request.
+              </p>
+          </div>
+          <div class="support-banner-actions">
+            <a href="{{ route('contact') }}" class="btn-primary">Contact Us</a>
+            <a href="{{ route('helpdesk') }}" class="btn-ghost">Help Desk</a>
+          </div>
+        </div>
+     </section>
+     @endauth
       
         @guest
         <section class="cta-banner">

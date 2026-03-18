@@ -75,6 +75,115 @@
 
             <div class="product-show-description">
                 {{ $product->Description }}
+              @if($product->ProductID == 20)
+              <div class="product-colour-picker">
+                <div class="colour-picker-label">Colour</div>
+                 <div class="colour-options">
+                   <button class="colour-btn active" 
+                    style="background:#2C2C2E;" 
+                    data-colour="Space Black"
+                    data-image="{{ asset('images/products/20.jpg') }}"
+                    onclick="selectColour(this)">
+                   </button>
+                   <button class="colour-btn" 
+                    style="background:#F5E6D3;" 
+                    data-colour="Gold"
+                    data-image="{{ asset('images/products/20_1.jpg') }}"
+                    onclick="selectColour(this)">
+                   </button>
+                   <button class="colour-btn" 
+                    style="background:#4A3728;" 
+                    data-colour="Deep Purple"
+                    data-image="{{ asset('images/products/20_2.jpg') }}"
+                    onclick="selectColour(this)">
+                   </button>
+                 </div>
+                <div class="selected-colour-name" id="selectedColour">Space Black</div>
+            </div>
+            @endif
+            @if($product->ProductID == 21)
+              <div class="product-colour-picker">
+                <div class="colour-picker-label">Colour</div>
+                <div class="colour-options">
+                  <button class="colour-btn active"
+                    style="background:#1C1C1C;"
+                    data-colour="Phantom Black"
+                    data-image="{{ asset('images/products/21.jpg') }}"
+                    onclick="selectColour(this)">
+                  </button>
+                  <button class="colour-btn"
+                    style="background:#F5F0E8;"
+                    data-colour="Cream"
+                    data-image="{{ asset('images/products/21_1.jpg') }}"
+                    onclick="selectColour(this)">
+                  </button>
+               </div>
+              <div class="selected-colour-name" id="selectedColour">Phantom Black</div>
+          </div>
+        @endif
+
+       @if($product->ProductID == 22)
+        <div class="product-colour-picker">
+        <div class="colour-picker-label">Colour</div>
+        <div class="colour-options">
+            <button class="colour-btn active"
+                    style="background:#1A1A1A;"
+                    data-colour="Obsidian"
+                    data-image="{{ asset('images/products/22.jpg') }}"
+                    onclick="selectColour(this)">
+            </button>
+            <button class="colour-btn"
+                    style="background:#8BB8C8;"
+                    data-colour="Bay"
+                    data-image="{{ asset('images/products/22_1.jpg') }}"
+                    onclick="selectColour(this)">
+            </button>
+        </div>
+        <div class="selected-colour-name" id="selectedColour">Obsidian</div>
+    </div>
+    @endif
+
+    @if($product->ProductID == 23)
+    <div class="product-colour-picker">
+        <div class="colour-picker-label">Colour</div>
+        <div class="colour-options">
+            <button class="colour-btn active"
+                    style="background:#2C2C2C;"
+                    data-colour="Titan Black"
+                    data-image="{{ asset('images/products/23.jpg') }}"
+                    onclick="selectColour(this)">
+            </button>
+            <button class="colour-btn"
+                    style="background:#2D5A3D;"
+                    data-colour="Eternal Green"
+                    data-image="{{ asset('images/products/23_1.jpg') }}"
+                    onclick="selectColour(this)">
+            </button>
+        </div>
+        <div class="selected-colour-name" id="selectedColour">Titan Black</div>
+    </div>
+    @endif
+
+    @if($product->ProductID == 24)
+    <div class="product-colour-picker">
+        <div class="colour-picker-label">Colour</div>
+        <div class="colour-options">
+            <button class="colour-btn active"
+                    style="background:#1C1C1C;"
+                    data-colour="Midnight Black"
+                    data-image="{{ asset('images/products/24.jpg') }}"
+                    onclick="selectColour(this)">
+            </button>
+            <button class="colour-btn"
+                    style="background:#87CEEB;"
+                    data-colour="Sky Blue"
+                    data-image="{{ asset('images/products/24_1.jpg') }}"
+                    onclick="selectColour(this)">
+            </button>
+        </div>
+        <div class="selected-colour-name" id="selectedColour">Midnight Black</div>
+    </div>
+    @endif
             </div>
 
             <div class="product-show-specs">
@@ -162,6 +271,13 @@ function switchImage(src, el) {
     document.querySelectorAll('.product-thumb').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
     current = Array.from(document.querySelectorAll('.product-thumb')).indexOf(el) + 1;
+}
+
+function selectColour(el) {
+    document.querySelectorAll('.colour-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('selectedColour').textContent = el.dataset.colour;
+    document.getElementById('mainImage').src = el.dataset.image;
 }
 </script>
 @endsection

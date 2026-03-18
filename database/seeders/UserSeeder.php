@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    
     public function run(): void
     {
         DB::table('users')->insert([
@@ -26,8 +24,8 @@ class UserSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name' => 'John Doe',
-                'email' => 'JohnDoe@gmail.com',
+                'name' => 'Ahmed Rawi',
+                'email' => 'Ahmed@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
                 'Address' => 'Example123',

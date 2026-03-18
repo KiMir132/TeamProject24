@@ -1,6 +1,4 @@
-/* product-show.css */
 
-/* Breadcrumb */
 .breadcrumb-bar {
     background: var(--secondary);
     border-bottom: 1px solid var(--border);
@@ -30,7 +28,7 @@
     font-weight: 500;
 }
 
-/* Main layout */
+
 .product-show-layout {
     max-width: 1200px;
     margin: 36px auto;
@@ -41,7 +39,7 @@
     align-items: start;
 }
 
-/* Images */
+
 .product-main-image {
     background: var(--secondary);
     border: 1px solid var(--border);
@@ -88,7 +86,7 @@
     border-color: var(--accent);
 }
 
-/* Details */
+
 .product-show-badge {
     display: inline-block;
     padding: 4px 12px;
@@ -149,7 +147,7 @@
     margin-bottom: 24px;
 }
 
-/* Specs table */
+
 .product-show-specs {
     border: 1px solid var(--border);
     border-radius: 12px;
@@ -172,7 +170,7 @@
     color: var(--text-muted);
 }
 
-/* Add to cart button */
+
 .btn-add-to-cart {
     display: block;
     width: 100%;
@@ -200,7 +198,7 @@
     opacity: 1;
 }
 
-/* Trust pills */
+
 .product-show-trust {
     display: flex;
     gap: 10px;
@@ -216,7 +214,7 @@
     color: var(--text-muted);
 }
 
-/* Related products */
+
 .related-section {
     background: var(--secondary);
     border-top: 1px solid var(--border);
@@ -286,7 +284,7 @@
     font-weight: 700;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     .product-show-layout {
         grid-template-columns: 1fr;
@@ -327,3 +325,47 @@
 
 .img-arrow-left  { left: 10px; }
 .img-arrow-right { right: 10px; }
+
+.product-colour-picker {
+    margin-bottom: 20px;
+}
+
+.colour-picker-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.colour-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.colour-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s;
+}
+
+.colour-btn:hover {
+    transform: scale(1.1);
+}
+
+.colour-btn.active {
+    border-color: var(--accent);
+    outline: 2px solid var(--border);
+    outline-offset: 2px;
+}
+
+.selected-colour-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+}

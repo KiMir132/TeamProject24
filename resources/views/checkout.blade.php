@@ -17,7 +17,7 @@
 
     <div class="checkout-layout">
 
-        {{-- Left: Form --}}
+        
         <div class="checkout-form-col">
             <form action="{{ route('checkout.process') }}" method="POST">
                 @csrf
@@ -29,11 +29,11 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" name="full_name" placeholder="John Smith" required>
+                            <input type="text" name="full_name" placeholder="Ahmed Rawi" required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" name="email" placeholder="john@example.com" required>
+                            <input type="email" name="email" placeholder="Ahmed@example.com" required>
                         </div>
                         <div class="form-group full-width">
                             <label>Address Line 1</label>
@@ -103,7 +103,7 @@
             </form>
         </div>
 
-        {{-- Right: Order Summary --}}
+        
         <div class="checkout-summary-col">
             <div class="checkout-summary-box">
                 <h2>Order Summary</h2>

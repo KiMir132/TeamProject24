@@ -8,7 +8,7 @@
 
 @section('content')
 
-    {{-- Hero --}}
+    
     <section class="contact-hero">
         <div class="contact-hero-inner">
             <div class="contact-hero-eyebrow">We're here to help</div>

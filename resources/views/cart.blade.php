@@ -20,7 +20,7 @@
 
     <div class="cart-layout">
 
-        {{-- Items --}}
+        
         <div class="cart-items-panel">
             @if(!$cart || $cart->items->isEmpty())
                 <div class="cart-empty">

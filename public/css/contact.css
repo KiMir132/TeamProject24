@@ -1,6 +1,4 @@
-/* contact.css — page-specific styles only */
 
-/* ── Hero ── */
 .contact-hero {
     background: var(--secondary);
     border-bottom: 1px solid var(--border);
@@ -35,14 +33,14 @@
     line-height: 1.6;
 }
 
-/* ── Page layout ── */
+
 .page-content {
     max-width: 860px;
     margin: 0 auto;
     padding: 36px 40px 60px;
 }
 
-/* ── Info cards ── */
+
 .contact-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -78,7 +76,7 @@
     font-weight: 600;
 }
 
-/* ── Form wrapper ── */
+
 .contact-form-wrapper {
     background: var(--secondary);
     border: 1px solid var(--border);
@@ -105,7 +103,7 @@
     color: var(--text-muted);
 }
 
-/* ── Form elements ── */
+
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -157,7 +155,7 @@
     margin-top: 4px;
 }
 
-/* ── Success message ── */
+
 #responseMessage {
     display: none;
     margin-top: 20px;
@@ -176,7 +174,7 @@
     flex-shrink: 0;
 }
 
-/* ── Responsive ── */
+
 @media (max-width: 640px) {
     .contact-hero   { padding: 32px 20px 24px; }
     .page-content   { padding: 24px 16px 40px; }

@@ -20,7 +20,7 @@
 
         @if($orders->isEmpty())
             <div class="orders-empty">
-                <div class="orders-empty-icon">📋</div>
+                <div class="orders-empty-icon"></div>
                 <h3>No orders yet</h3>
                 <p>Once you place an order, it will appear here.</p>
                 <a href="{{ route('products.index') }}" class="btn-primary">Start shopping</a>
@@ -39,7 +39,7 @@
                         <div class="order-card-header-left">
                             <div class="order-number">Order #{{ $order->OrderID }}</div>
                             <div class="order-date">
-                                📅 Placed on {{ \Carbon\Carbon::parse($order->Order_date)->format('d M Y') }}
+                                 Placed on {{ \Carbon\Carbon::parse($order->Order_date)->format('d M Y') }}
                             </div>
                         </div>
                         <div class="order-card-header-right">
@@ -76,10 +76,10 @@
                     <div class="order-card-footer">
                         <div class="order-footer-info">
                             <div class="order-footer-item">
-                                🚚 <span>Estimated delivery: 1–3 working days</span>
+                                 <span>Estimated delivery: 1–3 working days</span>
                             </div>
                             <div class="order-footer-item">
-                                🔄 <span>30-day returns policy applies</span>
+                                 <span>30-day returns policy applies</span>
                             </div>
                         </div>
                         <div class="order-footer-total">

@@ -81,3 +81,16 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+Route::get('forgot-password', [App\Http\Controllers\PasswordResetController::class, 'showForm'])
+    ->name('password.request');
+
+
+
+Route::post('reset-password', [App\Http\Controllers\PasswordResetController::class, 'resetPassword'])
+    ->name('password.update');
+
+Route::get('/helpdesk', [App\Http\Controllers\HelpDeskController::class, 'index'])
+    ->name('helpdesk');
+
+Route::post('/helpdesk', [App\Http\Controllers\HelpDeskController::class, 'submit'])
+    ->name('helpdesk.submit');

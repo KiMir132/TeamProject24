@@ -49,7 +49,7 @@
     margin-top: 32px;
 }
 
-/* ── Buttons ── */
+
 .btn-primary {
     background: var(--accent);
     border: none;
@@ -97,9 +97,7 @@
 }
 .btn-ghost-dark:hover { border-color: #fff; }
 
-/* ══════════════════════════════════════════
-   HERO
-   ══════════════════════════════════════════ */
+
 .hero {
     background: var(--secondary);
     border-bottom: 1px solid var(--border);
@@ -191,7 +189,7 @@
     flex-shrink: 0;
 }
 
-/* Hero visual cards */
+
 .hero-visual {
     flex: 1 1 300px;
     max-width: 420px;
@@ -337,13 +335,13 @@
 
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
 }
 
 .category-card {
     position: relative;
-    border-radius: 2px;
+    border-radius: 10px;
     overflow: hidden;
     aspect-ratio: 3 / 4;
     background-color: var(--accent);
@@ -536,7 +534,7 @@
 .cta-banner {
     background: var(--accent);
     color: var(--primary);
-    border-radius: 24px;
+    border-radius: 14px;
     padding: 40px 40px;
     margin-bottom: 12px;
 }
@@ -590,6 +588,66 @@
     height: 100%;
     object-fit: contain;
     padding: 10px;
+}
+
+
+.support-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    background: var(--accent);
+    color: var(--primary);
+    border-radius: 14px;
+    padding: 32px 36px;
+    flex-wrap: wrap;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.support-banner-text h2 {
+    margin: 0 0 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.support-banner-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 560px;
+}
+
+.support-link {
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.15s;
+}
+
+.support-link:hover { opacity: 0.7; }
+
+.support-banner-actions {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+.support-banner .btn-primary {
+    background: var(--primary);
+    color: var(--accent);
+}
+
+.support-banner .btn-ghost {
+    border-color: rgba(255,255,255,0.4);
+    color: var(--primary);
+}
+
+.support-banner .btn-ghost:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--primary);
 }
 
 @media (max-width: 900px) {

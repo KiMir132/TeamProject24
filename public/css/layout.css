@@ -157,7 +157,7 @@ a { text-decoration: none; color: inherit; }
     color: #fff;
 }
 
-/* ── Right: Auth + Cart + Toggle ── */
+
 .navbar-right {
     display: flex;
     align-items: center;
@@ -219,7 +219,7 @@ a { text-decoration: none; color: inherit; }
     line-height: 1;
 }
 
-/* Theme toggle */
+
 .theme-toggle {
     background: transparent;
     border: 1px solid rgba(255,255,255,0.25);
@@ -258,7 +258,7 @@ a { text-decoration: none; color: inherit; }
 .footer a { color: #d1d5db; }
 .footer a:hover { color: #fff; }
 
-/* ── Shared utilities ── */
+
 .btn-primary {
     background: var(--accent);
     border: none;
@@ -274,7 +274,7 @@ a { text-decoration: none; color: inherit; }
 }
 .btn-primary:hover { opacity: 0.85; }
 
-/* ── Responsive ── */
+
 @media (max-width: 900px) {
     .navbar-inner {
         grid-template-columns: 1fr auto;

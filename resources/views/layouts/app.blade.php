@@ -54,8 +54,8 @@
                 <li class="has-dropdown">
                     <a href="#">Support ▾</a>
                     <ul class="dropdown">
-                        <li><a href="#">Live Chat</a></li>
-                        <li><a href="#">Help Desk / Feedback</a></li>
+                        
+                        <li><a href="{{ route('helpdesk') }}">Help Desk / Feedback</a></li>
                     </ul>
                 </li>
             </ul>

@@ -14,7 +14,7 @@
     <nav class="navbar">
         <div class="navbar-inner">
 
-           
+            
             <div class="navbar-left">
                 <a href="{{ url('/') }}" class="navbar-logo">
                     <img src="{{ asset('images/logo.png') }}" alt="E-Quipment" class="logo-img"
@@ -23,7 +23,7 @@
                 </a>
             </div>
 
-            
+           
             <ul class="navbar-links">
                 <li>
                     <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active-nav' : '' }}">Home</a>
@@ -60,7 +60,7 @@
                 </li>
             </ul>
 
-            
+           
             <div class="navbar-right">
                 <button id="theme-toggle" class="theme-toggle" title="Toggle dark mode">☀ / ☾</button>
 
@@ -70,19 +70,11 @@
                         <ul class="dropdown dropdown-right">
                             <li><a href="{{ route('orders') }}">Order History</a></li>
                             <li><a href="{{ route('logout') }}">Logout</a></li>
-                            
-
                         </ul>
                     </div>
                 @else
-                  <div class="has-dropdown nav-user">
-                    <a href="#" class="nav-auth-link">Account ▾</a>
-                   <ul class="dropdown dropdown-right">
-                    <li><a href="{{ route('login') }}">Log In</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
-                   </ul>
-                 </div>
-             @endauth
+                    <a href="{{ route('login') }}" class="nav-auth-link">Log In</a>
+                @endauth
 
                 <a href="{{ route('cart') }}" class="nav-cart {{ request()->is('cart') ? 'active-nav' : '' }}" title="Cart">
                     🛒
@@ -103,19 +95,102 @@
     @yield('content')
 
     <footer class="footer">
-        <div class="footer-inner">
-            <div>© {{ date('Y') }} E-Quipment. All rights reserved.</div>
-            <div>Need help? <a href="{{ route('contact') }}">Contact us</a> or email E-Quipment123@gmail.com</div>
+        <div class="footer-top">
+
+           
+            <div class="footer-col footer-brand">
+                <div class="footer-logo">E-Quipment</div>
+                <p class="footer-tagline">Your trusted UK destination for premium PC hardware, components and peripherals.</p>
+                <div class="footer-contact">
+                    <div class="footer-contact-item">
+                        <i class='bx bx-envelope'></i>
+                        <span>E-Quipment123@gmail.com</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class='bx bx-phone'></i>
+                        <span>+44 (0) 123 456 7890</span>
+                    </div>
+                </div>
+                <div class="footer-socials">
+                    <a href="#" class="social-btn" title="Facebook"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" class="social-btn" title="Twitter/X"><i class='bx bxl-twitter'></i></a>
+                    <a href="#" class="social-btn" title="Instagram"><i class='bx bxl-instagram'></i></a>
+                    <a href="#" class="social-btn" title="YouTube"><i class='bx bxl-youtube'></i></a>
+                </div>
+            </div>
+
+           
+            <div class="footer-col">
+                <div class="footer-col-title">Shop</div>
+                <ul class="footer-links">
+                    <li><a href="{{ route('products.index') }}">All Products</a></li>
+                    <li><a href="{{ route('products.search', ['type' => 'CPU']) }}">CPUs</a></li>
+                    <li><a href="{{ route('products.search', ['type' => 'GPU']) }}">GPUs</a></li>
+                    <li><a href="{{ route('products.search', ['type' => 'RAM']) }}">RAM</a></li>
+                    <li><a href="{{ route('products.search', ['type' => 'Storage']) }}">Storage</a></li>
+                    <li><a href="{{ route('products.search', ['type' => 'Monitor']) }}">Monitors</a></li>
+                    <li><a href="{{ route('products.search', ['type' => 'Accessory']) }}">Accessories</a></li>
+                </ul>
+            </div>
+
+            
+            <div class="footer-col">
+                <div class="footer-col-title">Support</div>
+                <ul class="footer-links">
+                    <li><a href="{{ route('helpdesk') }}">Help Desk</a></li>
+                    <li><a href="{{ route('helpdesk') }}#faq">FAQs</a></li>
+                    <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                    <li><a href="{{ route('orders') }}">Order History</a></li>
+                    <li><a href="{{ route('helpdesk') }}">Returns & Refunds</a></li>
+                </ul>
+            </div>
+
+            
+            <div class="footer-col">
+                <div class="footer-col-title">Company</div>
+                <ul class="footer-links">
+                    <li><a href="{{ route('about') }}">About Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            
+
+        </div>
+
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner">
+                <div>© {{ date('Y') }} E-Quipment. All rights reserved.</div>
+                <div class="footer-legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <span>·</span>
+                    <a href="#">Terms & Conditions</a>
+                    <span>·</span>
+                   
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="{{ asset('js/lightdark.js') }}"></script>
-    
-    
+    <script>
+    function subscribeNewsletter(e) {
+        e.preventDefault();
+        const email = document.getElementById('newsletterEmail').value;
+        if (email) {
+            document.getElementById('newsletterForm').style.display = 'none';
+            document.getElementById('newsletterMsg').style.display = 'block';
+        }
+    }
+    </script>
+
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2026/02/26/14/20260226143645-K2KG2DID.js" defer></script>
-    
-    
     @yield('scripts')
+    
+    
+    
 </body>
 </html>

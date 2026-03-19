@@ -7,6 +7,10 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\AdminUserController;
 
 Route::get('/', function () {
     $products      = Product::orderBy('Price', 'desc')->take(8)->get();
@@ -94,3 +98,25 @@ Route::get('/helpdesk', [App\Http\Controllers\HelpDeskController::class, 'index'
 
 Route::post('/helpdesk', [App\Http\Controllers\HelpDeskController::class, 'submit'])
     ->name('helpdesk.submit');
+
+
+Route::prefix('admin')->group(function () {
+
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+    Route::get('/products', [AdminProductController::class, 'index'])->name('admin.products');
+    Route::get('/products/create', [AdminProductController::class, 'create'])->name('admin.products.create');
+    Route::post('/products/store', [AdminProductController::class, 'store'])->name('admin.products.store');
+    Route::get('/products/edit/{product}', [AdminProductController::class, 'edit'])->name('admin.products.edit');
+    Route::post('/products/update/{product}', [AdminProductController::class, 'update'])->name('admin.products.update');
+    Route::delete('/products/delete/{product}', [AdminProductController::class, 'delete'])->name('admin.products.delete');
+
+    Route::get('/orders', [AdminOrderController::class, 'index'])->name('admin.orders');
+    Route::post('/orders/update/{id}', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.update');
+
+    Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users');
+    Route::get('/users/edit/{user}', [AdminUserController::class, 'edit'])->name('admin.users.edit');
+    Route::post('/users/update/{user}', [AdminUserController::class, 'update'])->name('admin.users.update');
+    Route::delete('/users/delete/{user}', [AdminUserController::class, 'delete'])->name('admin.users.delete');
+
+});

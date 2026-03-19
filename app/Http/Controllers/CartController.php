@@ -118,15 +118,10 @@ class CartController extends Controller
             return redirect()->back()->withErrors('Your cart is empty.');
         }
 
-       $order = Order::create([
-    'UID'        => $user->UID,
-    'Order_date' => now(),
-    'full_name'  => $request->full_name,
-    'email'      => $request->email,
-    'address_line1' => $request->address_line1,
-    'city'       => $request->city,
-    'zip'        => $request->zip,
-]);
+        $order = Order::create([
+            'UID'        => $user->UID,
+            'Order_date' => now(),
+        ]);
 
         foreach ($cart->items as $item) {
             OrderItem::create([
@@ -146,8 +141,7 @@ class CartController extends Controller
     {
         $userID = auth()->id();
         $cart = Cart::where('UID', $userID)->first();
-        $cartId = $cart->CartID;
-        $cartItem = CartItem::where('ProductID', $productID)->where('CartID', $cartId)->first();
+        $cartItem = CartItem::where('ProductID', $productID)->where('CartID', $cart->CartID)->first();
         $ProductPrice = Product::where('ProductID', $cartItem->ProductID)->value('Price');
         if ($cartItem) {
             $cartItem->Quantity++;
@@ -155,18 +149,13 @@ class CartController extends Controller
             $cartItem->save();
         }
         return back();
-
-
     }
-
 
     public function decrease($productID)
     {
         $userID = auth()->id();
         $cart = Cart::where('UID', $userID)->first();
-        $cartId = $cart->CartID;
-
-        $cartItem = CartItem::where('ProductID', $productID)->where('CartID', $cartId)->first();
+        $cartItem = CartItem::where('ProductID', $productID)->where('CartID', $cart->CartID)->first();
         $ProductPrice = Product::where('ProductID', $cartItem->ProductID)->value('Price');
         if ($cartItem) {
             if ($cartItem->Quantity > 1) {
@@ -176,8 +165,7 @@ class CartController extends Controller
             } else {
                 $cartItem->delete();
             }
-        
+        }
         return back();
-}
-}
+    }
 }

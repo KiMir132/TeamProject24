@@ -8,7 +8,17 @@ class Order extends Model
 {
     protected $table = 'order';
     protected $primaryKey = 'OrderID';
-    protected $fillable = ['Order_date', 'UID', 'full_name', 'email', 'address_line1', 'city', 'zip'];
+    public $timestamps = true;
+
+    protected $fillable = [
+        'UID',
+        'Order_date',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'UID', 'UID');
+    }
 
     public function items()
     {

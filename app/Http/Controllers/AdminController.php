@@ -43,7 +43,7 @@ class AdminController extends Controller
 
     public function editProduct(Product $product)
     {
-        return view('admin.editProduct', compact('product'));
+        return view('admin.edit-product', compact('product'));
     }
 
     public function updateProduct(Request $request, Product $product)
@@ -88,7 +88,7 @@ class AdminController extends Controller
 
     public function editUser(User $user)
     {
-        return view('admin.editUser', compact('user'));
+        return view('admin.edit-user', compact('user'));
     }
 
     public function updateUser(Request $request, User $user)

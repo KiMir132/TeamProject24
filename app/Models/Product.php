@@ -41,5 +41,17 @@ class Product extends Model
 
         return $query;
     }
+
+    public function getStockStatusAttribute()
+{
+    if ($this->Quantity <= 0) {
+        return 'Out of Stock';
+    }
+    if ($this->Quantity <= 5) {
+        return 'Low Stock';
+    }
+
+    return 'In Stock';
+}
 }
 

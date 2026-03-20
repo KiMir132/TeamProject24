@@ -14,7 +14,11 @@
 
     <nav class="navbar">
         <div class="navbar-inner">
-
+            <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
             
             <div class="navbar-left">
                 <a href="{{ url('/') }}" class="navbar-logo">
@@ -92,6 +96,24 @@
 
         </div>
     </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu-links">
+        <li><a href="{{ url('/') }}">Home</a></li>
+        <li><a href="{{ route('products.index') }}">Products</a></li>
+        <li><a href="{{ route('about') }}">About</a></li>
+        <li><a href="{{ route('contact') }}">Contact</a></li>
+        <li><a href="{{ route('helpdesk') }}">Help Desk</a></li>
+        @auth
+            <li><a href="{{ route('orders') }}">Order History</a></li>
+            <li><a href="{{ route('logout') }}">Logout</a></li>
+        @else
+            <li><a href="{{ route('login') }}">Log In</a></li>
+            <li><a href="{{ route('register') }}">Register</a></li>
+        @endauth
+        <li><a href="{{ route('cart') }}">Cart 🛒</a></li>
+    </ul>
+</div>
 
     @yield('content')
 
@@ -189,6 +211,14 @@
 
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2026/02/26/14/20260226143645-K2KG2DID.js" defer></script>
+
+    <script>
+document.getElementById('navHamburger').addEventListener('click', function() {
+    this.classList.toggle('open');
+    document.getElementById('mobileMenu').classList.toggle('open');
+});
+</script>
+
     @yield('scripts')
     
     

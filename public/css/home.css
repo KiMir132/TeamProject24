@@ -650,18 +650,59 @@
     color: var(--primary);
 }
 
+@media (max-width: 1024px) {
+    .hero-title { font-size: 3rem; }
+    .category-grid { grid-template-columns: repeat(3, 1fr); }
+    .product-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+}
+
 @media (max-width: 900px) {
     .hero-visual { display: none; }
     .hero-text { max-width: 100%; }
+    .hero-title { font-size: 2.6rem; }
+    .category-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
     .hero { padding: 40px 20px 36px; }
-    .hero-title { font-size: 2.1rem; }
+    .hero-title { font-size: 2.2rem; }
     .page-content { padding: 24px 16px 40px; }
+    .section-block { margin-bottom: 36px; }
     .trust-bar { padding: 16px 20px; }
     .trust-divider { display: none; }
-    .trust-bar-inner { gap: 14px; }
-    .cta-banner { padding: 28px 20px; border-radius: 16px; }
+    .trust-bar-inner { gap: 12px; justify-content: center; }
+    .trust-item { flex: 1 1 140px; }
+    .cta-banner { padding: 28px 20px; }
     .cta-banner-inner { flex-direction: column; align-items: flex-start; }
+    .support-banner { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
+    .support-banner-actions { width: 100%; }
+    .support-banner-actions a { flex: 1; text-align: center; }
+    .search-panel { padding: 16px; }
+}
+
+@media (max-width: 576px) {
+    .hero { padding: 32px 16px 28px; }
+    .hero-title { font-size: 1.9rem; }
+    .hero-subtitle { font-size: 0.95rem; }
+    .hero-cta { flex-direction: column; align-items: center; }
+    .hero-cta a { width: 100%; text-align: center; }
+    .hero-badges { flex-direction: column; align-items: center; }
+    .category-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .category-card { aspect-ratio: 4/3; }
+    .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .cta-banner { padding: 24px 16px; }
+    .cta-title { font-size: 1.2rem; }
+    .cta-actions { flex-direction: column; width: 100%; }
+    .cta-actions a { width: 100%; text-align: center; }
+    .search-row { flex-direction: column; }
+    .search-field-group { min-width: 100%; }
+    .search-button { width: 100%; }
+    .search-button .btn-primary { width: 100%; }
+}
+
+@media (max-width: 480px) {
+    .hero-title { font-size: 1.7rem; }
+    .category-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .product-grid { grid-template-columns: 1fr; }
+    .section-header h2 { font-size: 1.2rem; }
 }

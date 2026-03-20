@@ -13,6 +13,8 @@
             <th>Name</th>
             <th>Type</th>
             <th>Price</th>
+            <th>Stock</th>
+            <th>Status</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -22,6 +24,8 @@
             <td>{{ $product->Name }}</td>
             <td>{{ $product->Type }}</td>
             <td>{{ number_format($product->Price, 2) }}</td>
+            <td>{{ $product->Quantity }}</td>
+            <td>{{ $product->stock_status }}</td>
             <td>
                 <a href="{{ route('admin.products.edit', $product) }}" class="btn-primary">Edit</a>
                 <form action="{{ route('admin.products.delete', $product) }}" method="POST" style="display:inline-block;">

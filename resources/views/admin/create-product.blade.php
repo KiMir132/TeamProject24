@@ -10,6 +10,7 @@
     <input type="text" name="name" placeholder="Product Name" value="{{ old('name') }}" required>
     <input type="text" name="type" placeholder="Type" value="{{ old('type') }}" required>
     <input type="number" name="price" placeholder="Price" step="0.01" value="{{ old('price') }}" required>
+    <input type="number" name="quantity" placeholder="Stock Quantity" value="{{ old('quantity') }}" required>
     <button type="submit" class="btn-primary">Create Product</button>
 </form>
 @endsection

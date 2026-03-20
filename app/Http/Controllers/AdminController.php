@@ -14,8 +14,9 @@ class AdminController extends Controller
         $totalProducts = Product::count();
         $totalOrders   = Order::count();
         $totalUsers    = User::count();
+        $lowStock      = Product::where('Quantity', '<=', 5)->count();
 
-        return view('admin.dashboard', compact('totalProducts', 'totalOrders', 'totalUsers'));
+        return view('admin.dashboard', compact('totalProducts', 'totalOrders', 'totalUsers', 'lowStock'));
     }
 
     public function products()
@@ -32,9 +33,11 @@ class AdminController extends Controller
     public function storeProduct(Request $request)
     {
         $data = $request->validate([
-            'name'  => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'type'  => 'required|string|max:255',
+            'Name'        => 'required|string|max:255',
+            'Description' => 'required|string',
+            'Type'        => 'required|string|max:255',
+            'Price'       => 'required|numeric',
+            'Quantity'    => 'required|integer|min:0',
         ]);
 
         Product::create($data);
@@ -49,9 +52,11 @@ class AdminController extends Controller
     public function updateProduct(Request $request, Product $product)
     {
         $data = $request->validate([
-            'name'  => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'type'  => 'required|string|max:255',
+            'Name'        => 'required|string|max:255',
+            'Description' => 'required|string',
+            'Type'        => 'required|string|max:255',
+            'Price'       => 'required|numeric',
+            'Quantity'    => 'required|integer|min:0',
         ]);
 
         $product->update($data);

@@ -16,5 +16,9 @@
         <h2>{{ $totalUsers }}</h2>
         <p>Total Users</p>
     </div>
+    <div class="stat-card">
+        <h2>{{ $lowStock }}</h2>
+        <p>Low Stock Items</p>
+    </div>
 </div>
 @endsection

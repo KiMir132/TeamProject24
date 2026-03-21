@@ -10,10 +10,7 @@ class Order extends Model
     protected $primaryKey = 'OrderID';
     public $timestamps = true;
 
-    protected $fillable = [
-        'UID',
-        'Order_date',
-    ];
+    protected $fillable = ['Order_date', 'UID', 'full_name', 'email', 'address_line1', 'city', 'zip'];
 
     public function user()
     {

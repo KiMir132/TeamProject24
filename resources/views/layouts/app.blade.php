@@ -78,8 +78,14 @@
                         </ul>
                     </div>
                 @else
-                    <a href="{{ route('login') }}" class="nav-auth-link">Log In</a>
-                @endauth
+                 <div class="has-dropdown nav-user">
+                   <a href="#" class="nav-auth-link">Account ▾</a>
+                   <ul class="dropdown dropdown-right">
+                   <li><a href="{{ route('login') }}">Log In</a></li>
+                   <li><a href="{{ route('register') }}">Register</a></li>
+                  </ul>
+                </div>
+              @endauth
 
                 <a href="{{ route('cart') }}" class="nav-cart {{ request()->is('cart') ? 'active-nav' : '' }}" title="Cart">
                     🛒

@@ -123,9 +123,14 @@ class CartController extends Controller
             }
         }
         $order = Order::create([
-            'UID'        => $user->UID,
-            'Order_date' => now(),
-        ]);
+          'UID'            => $user->UID,
+          'Order_date'     => now(),
+          'full_name'      => $request->full_name,
+          'email'          => $request->email,
+          'address_line1'  => $request->address_line1,
+          'city'           => $request->city,
+          'zip'            => $request->zip,
+       ]);
         foreach ($cart->items as $item) {
             OrderItem::create([
                 'OrderID'   => $order->OrderID,

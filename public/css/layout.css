@@ -13,10 +13,10 @@
 :root[data-theme="dark"] {
     --primary:   #1f2839;
     --secondary: #111827;
-    --accent:    #f8f1ff;
+    --accent: #f8f1ff;
     --text:      #ffffff;
     --text-muted:#9ca3af;
-    --border:    #374151;
+    --border:    #1f2734;
     --card-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
@@ -38,17 +38,73 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
-/* ══════════════════════════════════════════
-   NAV — 3-zone layout: logo | links | actions
-   ══════════════════════════════════════════ */
+
 .navbar {
-    background: var(--accent);
+    background: #1f2839;
     position: sticky;
     top: 0;
     z-index: 200;
     box-shadow: 0 2px 12px rgba(0,0,0,0.18);
 }
 
+:root[data-theme="dark"] .navbar {
+    background: #ffffff;
+}
+
+:root[data-theme="dark"] .navbar-links > li > a {
+    color: rgba(12, 13, 35, 0.75);
+}
+
+:root[data-theme="dark"] .navbar-links > li > a:hover,
+:root[data-theme="dark"] .navbar-links > li > a.active-nav {
+    color: #000000;
+}
+
+:root[data-theme="dark"] .navbar-links > li > a.active-nav {
+    border-bottom-color: #100f19;
+}
+
+:root[data-theme="dark"] .logo-text {
+    color: #100f19;
+}
+
+:root[data-theme="dark"] .nav-auth-link {
+    color: rgba(0,0,0,0.75);
+    border-color: rgba(0,0,0,0.3);
+}
+
+:root[data-theme="dark"] .nav-auth-link:hover {
+    color: #100f19;
+    border-color: #100f19;
+}
+
+:root[data-theme="dark"] .nav-cart {
+    color: rgba(0,0,0,0.75);
+    border-color: rgba(0,0,0,0.2);
+}
+
+:root[data-theme="dark"] .theme-toggle {
+    color: rgba(0,0,0,0.7);
+    border-color: rgba(0,0,0,0.25);
+}
+
+:root[data-theme="dark"] .nav-hamburger span {
+    background: #100f19;
+}
+
+:root[data-theme="dark"] .mobile-menu {
+    background: #ffffff;
+}
+
+:root[data-theme="dark"] .mobile-menu-links li a {
+    color: rgba(0,0,0,0.75);
+    border-bottom-color: rgba(0,0,0,0.06);
+}
+
+:root[data-theme="dark"] .mobile-menu-links li a:hover {
+    background: rgba(0,0,0,0.05);
+    color: #100f19;
+}
 .navbar-inner {
     max-width: 1300px;
     margin: 0 auto;
@@ -433,7 +489,7 @@ a { text-decoration: none; color: inherit; }
 .footer a { color: #94a3b8; }
 .footer a:hover { color: #fff; }
 
-/* ── Shared utilities ── */
+
 .btn-primary {
     background: var(--accent);
     border: none;
@@ -482,7 +538,7 @@ a { text-decoration: none; color: inherit; }
     top: 90px;
     left: 0;
     right: 0;
-    background: var(--accent);
+    background: #1f2839;
     z-index: 199;
     border-top: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 8px 24px rgba(0,0,0,0.3);

@@ -64,6 +64,8 @@
 </div>
 </div>
 
+@endsection
+
 @section('scripts')
 <script>
 const passwordInput = document.getElementById('password');

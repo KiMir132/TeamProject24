@@ -180,7 +180,7 @@
                 <ul class="footer-links">
                     <li><a href="{{ route('about') }}">About Us</a></li>
                     <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="{{route('terms')}}">Terms & Conditions</a></li>
                 </ul>
             </div>
 
@@ -195,7 +195,7 @@
                 <div class="footer-legal-links">
                     <a href="#">Privacy Policy</a>
                     <span>·</span>
-                    <a href="#">Terms & Conditions</a>
+                    <a href="{{route('terms')}}">Terms & Conditions</a>
                     <span>·</span>
                    
                 </div>

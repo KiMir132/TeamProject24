@@ -43,12 +43,16 @@ class ProductController extends Controller
     }
      public function show($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::with(['reviews.user'])->findOrFail($id);
+
         $related = Product::where('Type', $product->Type)
             ->where('ProductID', '!=', $product->ProductID)
             ->take(4)
             ->get();
 
-        return view('products.show', compact('product', 'related'));
+        $reviewCount = $product->reviews->count();
+        $averageRating = $reviewCount ? round($product->reviews->avg('Rating'), 1) : 0;
+
+        return view('products.show', compact('product', 'related', 'reviewCount', 'averageRating'));
     }
 }

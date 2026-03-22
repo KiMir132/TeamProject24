@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ReviewController;
 
 Route::get('/', function () {
     $products      = Product::orderBy('Price', 'desc')->take(8)->get();
@@ -15,6 +16,10 @@ Route::get('/', function () {
     $totalProducts = Product::count();
     return view('home', compact('products', 'categories', 'totalProducts'));
 });
+
+Route::post('/products/{product}/reviews', [ReviewController::class, 'store'])
+    ->name('reviews.store')
+    ->middleware('auth');
 
 Route::get('register', [RegistrationController::class, 'showForm'])
     ->name('register');

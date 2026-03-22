@@ -53,5 +53,9 @@ class Product extends Model
 
     return 'In Stock';
 }
+
+    public function reviews(){
+        return $this->hasMany(Review::Class, 'ProductID', 'ProductID');
+    }
 }
 

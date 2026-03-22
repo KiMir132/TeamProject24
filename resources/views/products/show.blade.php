@@ -236,6 +236,85 @@
         </div>
     @endif
 
+    <div class="product-reviews-section">
+    <div class="product-reviews-inner">
+
+        @auth
+            <div class="review-form-section">
+                <h3>Leave a review</h3>
+
+                @if(session('success'))
+                    <div class="success-message">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div class="error-message">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('reviews.store', $product->ProductID) }}">
+                    @csrf
+
+                    <div class="form-group">
+                        <label for="Rating">Rating</label>
+                        <select name="Rating" id="Rating" required>
+                            <option value="">Choose rating</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Description">Review</label>
+                        <textarea name="Description" id="Description" rows="4" placeholder="Write your review"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-review-btn">Submit Review</button>
+                </form>
+            </div>
+        @else
+            <p><a href="{{ route('login') }}">Log In</a> to leave a review</p>
+        @endauth
+
+        <h2>Customer Reviews</h2>
+
+        <div class="reviews-summary">
+            <strong>{{ $averageRating }}/5</strong>
+            <span>({{ $reviewCount }} {{ $reviewCount === 1 ? 'review' : 'reviews' }})</span>
+        </div>
+
+        @forelse($product->reviews as $review)
+            <div class="review-card">
+                <div class="review-header">
+                    <strong>{{ $review->user->name ?? 'Anonymous User' }}</strong>
+                    <span>{{ rtrim(rtrim(number_format($review->Rating, 1), '0'), '.') }}/5</span>
+                </div>
+
+                <div class="review-body">
+                    {{ $review->Description }}
+                </div>
+
+                <div class="review-date">
+                    {{ $review->created_at->format('d M Y') }}
+                </div>
+            </div>
+        @empty
+            <p>No reviews yet for this product.</p>
+        @endforelse
+
+    </div>
+</div>
+
 @endsection
 
 @section('scripts')

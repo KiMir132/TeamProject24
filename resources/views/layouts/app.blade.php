@@ -67,6 +67,7 @@
 
            
             <div class="navbar-right">
+                <div id="zoom-controls-mount"></div>
                 <button id="theme-toggle" class="theme-toggle" title="Toggle dark mode">☀ / ☾</button>
 
                 @auth
@@ -204,6 +205,9 @@
     </footer>
 
     <script src="{{ asset('js/lightdark.js') }}"></script>
+
+    <script src="{{ asset('js/zoom.js') }}"></script>
+
     <script>
     function subscribeNewsletter(e) {
         e.preventDefault();

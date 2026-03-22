@@ -105,6 +105,16 @@ a { text-decoration: none; color: inherit; }
     background: rgba(0,0,0,0.05);
     color: #100f19;
 }
+
+:root[data-theme="dark"] .nav-zoom {
+    color: rgba(0,0,0,0.7);
+    border-color: rgba(0,0,0,0.25);
+}
+
+:root[data-theme="dark"] .nav-zoom:hover {
+    color: #100f19;
+    border-color: #100f19;
+}
 .navbar-inner {
     max-width: 1300px;
     margin: 0 auto;
@@ -293,6 +303,55 @@ a { text-decoration: none; color: inherit; }
 .theme-toggle:hover {
     border-color: #fff;
     color: #fff;
+}
+
+.nav-zoom {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: transparent;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.78rem;
+    font-family: "Ubuntu", sans-serif;
+    line-height: 1;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.nav-zoom:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+.nav-zoom-btn {
+    border: none;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 0;
+    width: 12px;
+    height: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-zoom-level {
+    min-width: 34px;
+    text-align: center;
+    font-size: 0.72rem;
+    line-height: 1;
+}
+
+#zoom-controls-mount {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
 }
 
 /* ── Footer ── */
@@ -616,3 +675,4 @@ a { text-decoration: none; color: inherit; }
     .footer-top { grid-template-columns: 1fr; }
     .footer-brand { grid-column: span 1; }
 }
+

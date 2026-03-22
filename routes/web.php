@@ -88,6 +88,9 @@ Route::get('forgot-password', [App\Http\Controllers\PasswordResetController::cla
 Route::get('/terms', function () {
     return view('terms');
 })->name('terms');
+Route::get('/privacypolicy', function () {
+return view('privacypolicy');
+})->name('privacy');
 
 Route::post('reset-password', [App\Http\Controllers\PasswordResetController::class, 'resetPassword'])
     ->name('password.update');

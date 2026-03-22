@@ -1,0 +1,66 @@
+.privacy-container {
+max-width: 900px;
+margin: 60px auto;
+padding: 40px;
+background-color: #ffffff;
+border-radius: 10px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+line-height: 1.7;
+}
+.privacy-container h1 {
+text-align: center;
+font-size: 2.2rem;
+ margin-bottom: 30px;
+color: #222;
+}
+.privacy-container h2 {
+font-size: 1.4rem;
+margin-top: 30px;
+margin-bottom: 10px;
+color: #1a1a1a;
+border-left: 4px solid #007bff;
+padding-left: 10px;
+}
+.privacy-container p {
+font-size: 0.95rem;
+color: #555;
+margin-bottom: 12px;
+}
+.privacy-container ul {
+margin-left: 20px;
+margin-bottom: 15px;
+color: #555;
+}
+.privacy-container li {
+margin-bottom: 6px;
+}
+.privacy-container a {
+color: #007bff;
+text-decoration: none;
+}
+.privacy-container a:hover {
+text-decoration: underline;
+}
+[data-theme="dark"] {
+background-color: #121212;
+}
+[data-theme="dark"] .privacy-container {
+background-color: #1e1e1e;
+color: #e0e0e0;
+}
+[data-theme="dark"] .privacy-container h1,
+[data-theme="dark"] .privacy-container h2 {
+color: #ffffff;
+}
+[data-theme="dark"] .privacy-container p,
+[data-theme="dark"] .privacy-container ul,
+[data-theme="dark"] .privacy-container li {
+color: #cccccc;
+}
+[data-theme="dark"] .privacy-container h2 {
+border-left: 4px solid #4dabf7;
+}
+[data-theme="dark"] .privacy-container a {
+color: #4dabf7;
+}

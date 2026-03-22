@@ -179,7 +179,7 @@
                 <div class="footer-col-title">Company</div>
                 <ul class="footer-links">
                     <li><a href="{{ route('about') }}">About Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
                     <li><a href="{{route('terms')}}">Terms & Conditions</a></li>
                 </ul>
             </div>
@@ -193,7 +193,7 @@
             <div class="footer-bottom-inner">
                 <div>© {{ date('Y') }} E-Quipment. All rights reserved.</div>
                 <div class="footer-legal-links">
-                    <a href="#">Privacy Policy</a>
+                    <a href="{{route('privacy')}}">Privacy Policy</a>
                     <span>·</span>
                     <a href="{{route('terms')}}">Terms & Conditions</a>
                     <span>·</span>

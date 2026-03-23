@@ -1,4 +1,8 @@
-
+php artisan migrate:fresh --seed .page-header {
+    background: var(--secondary);
+    padding: 40px 40px 32px;
+    border-bottom: 1px solid var(--border);
+}
 
 .page-header-inner {
     max-width: 1200px;
@@ -75,8 +79,6 @@
     background: var(--primary);
     color: var(--text);
     font-family: "Ubuntu", sans-serif;
-    width: 100%;
-
 }
 
 .search-input:focus {
@@ -122,8 +124,6 @@
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 16px;
-    flex-wrap: wrap;
-    gap: 6px;
 }
 
 .products-header h2 {
@@ -211,7 +211,6 @@
     margin-top: 10px;
     padding-top: 10px;
     border-top: 1px solid var(--border);
-    gap: 8px;
 }
 
 .product-price {
@@ -310,8 +309,6 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 .page-item {
@@ -349,35 +346,14 @@
     cursor: not-allowed;
 }
 
-@media (max-width: 1024px) {
-    .page-content { padding: 24px 24px 48px; }
-    .product-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-}
-
 @media (max-width: 768px) {
-    .page-header { padding: 28px 20px 20px; }
-    .page-content { padding: 20px 16px 40px; }
-    .product-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
-    .search-panel { padding: 14px 16px; }
-}
-
-@media (max-width: 576px) {
-    .page-header-title { font-size: 1.6rem; }
-    .search-row { flex-direction: column; }
-    .search-field-group { min-width: 100%; flex: 1 1 100%; }
-    .search-button { width: 100%; }
-    .search-button .btn-primary { width: 100%; text-align: center; }
-    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .product-card { padding: 12px; }
-    .products-header h2 { font-size: 1.1rem; }
-    .category-pill { font-size: 0.75rem; padding: 5px 10px; }
-}
-
-@media (max-width: 480px) {
-    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .product-name { font-size: 0.88rem; }
-    .product-price { font-size: 0.95rem; }
-    .btn-add-cart { font-size: 0.75rem; padding: 6px 10px; }
-    .page-header { padding: 20px 14px 16px; }
-    .page-content { padding: 16px 12px 32px; }
+    .page-header {
+        padding: 28px 20px 20px;
+    }
+    .page-content {
+        padding: 20px 16px 40px;
+    }
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
 }

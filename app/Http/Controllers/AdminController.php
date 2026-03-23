@@ -12,9 +12,9 @@ class AdminController extends Controller
     public function dashboard()
     {
         $totalProducts = Product::count();
-        $totalOrders   = Order::count();
-        $totalUsers    = User::count();
-        $lowStock      = Product::where('Quantity', '<=', 5)->count();
+        $totalOrders = Order::count();
+        $totalUsers = User::count();
+        $lowStock = Product::where('Quantity', '<=', 5)->count();
 
         return view('admin.dashboard', compact('totalProducts', 'totalOrders', 'totalUsers', 'lowStock'));
     }
@@ -33,14 +33,20 @@ class AdminController extends Controller
     public function storeProduct(Request $request)
     {
         $data = $request->validate([
-            'Name'        => 'required|string|max:255',
-            'Description' => 'required|string',
-            'Type'        => 'required|string|max:255',
-            'Price'       => 'required|numeric',
-            'Quantity'    => 'required|integer|min:0',
+            'Name' => 'required|string|max:255',
+            'Description' => 'nullable|string',
+            'Type' => 'required|string|max:255',
+            'Price' => 'required|numeric',
+            'Quantity' => 'required|integer|min:0',
+            'Image' => 'nullable|image|max:2048'
         ]);
 
+        if ($request->hasFile('Image')) {
+            $data['Image'] = $request->file('Image')->store('products', 'public');
+        }
+
         Product::create($data);
+
         return redirect()->route('admin.products');
     }
 
@@ -52,14 +58,20 @@ class AdminController extends Controller
     public function updateProduct(Request $request, Product $product)
     {
         $data = $request->validate([
-            'Name'        => 'required|string|max:255',
-            'Description' => 'required|string',
-            'Type'        => 'required|string|max:255',
-            'Price'       => 'required|numeric',
-            'Quantity'    => 'required|integer|min:0',
+            'Name' => 'required|string|max:255',
+            'Description' => 'nullable|string',
+            'Type' => 'required|string|max:255',
+            'Price' => 'required|numeric',
+            'Quantity' => 'required|integer|min:0',
+            'Image' => 'nullable|image|max:2048'
         ]);
 
+        if ($request->hasFile('Image')) {
+            $data['Image'] = $request->file('Image')->store('products', 'public');
+        }
+
         $product->update($data);
+
         return redirect()->route('admin.products');
     }
 
@@ -71,17 +83,18 @@ class AdminController extends Controller
 
     public function orders()
     {
-        $orders = Order::orderBy('created_at', 'desc')->paginate(10);
+        $orders = Order::with('user')->orderBy('created_at', 'desc')->paginate(10);
         return view('admin.orders', compact('orders'));
     }
 
     public function updateOrder(Request $request, Order $order)
     {
         $data = $request->validate([
-            'status' => 'required|string|max:50',
+            'Status' => 'required|string|max:50'
         ]);
 
         $order->update($data);
+
         return redirect()->route('admin.orders');
     }
 
@@ -99,11 +112,12 @@ class AdminController extends Controller
     public function updateUser(Request $request, User $user)
     {
         $data = $request->validate([
-            'name'  => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255'
         ]);
 
         $user->update($data);
+
         return redirect()->route('admin.users');
     }
 

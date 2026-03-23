@@ -70,6 +70,9 @@ class CartController extends Controller
             ]);
         }
 
+        $cart->Total_Price = CartItem::where('CartID', $cart->CartID)->sum('Price');
+        $cart->save();
+
         return redirect()->route('cart');
     }
 
@@ -122,6 +125,12 @@ class CartController extends Controller
                     ->with('status', 'One or more items do not have enough stock.');
             }
         }
+
+        $totalPrice = 0;
+        foreach ($cart->items as $item) {
+            $totalPrice += $item->Price;
+        }
+
         $order = Order::create([
           'UID'            => $user->UID,
           'Order_date'     => now(),
@@ -130,7 +139,10 @@ class CartController extends Controller
           'address_line1'  => $request->address_line1,
           'city'           => $request->city,
           'zip'            => $request->zip,
+          'TotalPrice'     => $totalPrice,
+          'Status'         => 'Pending'
        ]);
+
         foreach ($cart->items as $item) {
             OrderItem::create([
                 'OrderID'   => $order->OrderID,
@@ -144,6 +156,9 @@ class CartController extends Controller
         }
 
         $cart->items()->delete();
+        $cart->Total_Price = 0;
+        $cart->save();
+
         return redirect()->route('order.confirmation', $order->OrderID);
     }
 
@@ -163,6 +178,8 @@ class CartController extends Controller
             $cartItem->Price = $cartItem->Quantity * $product->Price;
             $cartItem->save();
         }
+        $cart->Total_Price = CartItem::where('CartID', $cart->CartID)->sum('Price');
+        $cart->save();
         return back();
     }
 
@@ -181,6 +198,8 @@ class CartController extends Controller
                 $cartItem->delete();
             }
         }
+        $cart->Total_Price = CartItem::where('CartID', $cart->CartID)->sum('Price');
+        $cart->save();
         return back();
     }
 }

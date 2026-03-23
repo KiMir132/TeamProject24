@@ -15,6 +15,13 @@ return new class extends Migration
             $table->id('OrderID');
             $table->date('Order_date');
             $table->unsignedBigInteger('UID');
+            $table->string('full_name');
+            $table->string('email');
+            $table->string('address_line1');
+            $table->string('city');
+            $table->string('zip');
+            $table->decimal('TotalPrice', 10, 2)->default(0);
+            $table->string('Status')->default('Pending');
             $table->timestamps();
 
             $table->foreign('UID')->references('UID')->on('users')->onDelete('cascade');

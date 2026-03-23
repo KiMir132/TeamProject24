@@ -76,6 +76,10 @@ Route::get('/products/{product}', [ProductController::class, 'show'])
 Route::get('orders', [OrderController::class, 'showOrders'])
     ->name('orders')
     ->middleware('auth');
+    
+Route::post('orders/{order}/return', [OrderController::class, 'returnOrder'])
+    ->name('orders.return')
+    ->middleware('auth');
 
 Route::get('orders/confirmation/{id}', [OrderController::class, 'confirmation'])
     ->name('order.confirmation')

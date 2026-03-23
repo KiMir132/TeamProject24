@@ -45,6 +45,13 @@
                         <div class="order-card-header-right">
                             <div class="order-status">
                                 <span class="status-dot"></span> Processing
+                                <form action="{{ route('orders.return', $order) }}" method="POST" style="margin-top:10px;">
+                                    @csrf
+                                    <button type="submit" class="btn-primary" 
+                                        @if($order->Status === 'Returned') disabled @endif>
+                                        {{ $order->Status === 'Returned' ? 'Returned' : 'Return Order' }}
+                                    </button>
+                                </form>
                             </div>
                             <div class="order-total-header">
                                 £{{ number_format($order->items->sum(fn($i) => $i->Price), 2) }}

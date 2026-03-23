@@ -26,4 +26,22 @@ class OrderController extends Controller
 
         return view('order-confirmation', compact('order'));
     }
+
+    public function returnOrder(Order $order)
+    {
+        if ($order->Status === 'Returned') {
+            return back()->with('status', 'Order already returned');
+        }
+
+        foreach ($order->items as $item) {
+            $product = $item->product;
+            $product->Quantity += $item->Quantity;
+            $product->save();
+        }
+
+        $order->Status = 'Returned';
+        $order->save();
+
+        return back()->with('status', 'Order has been returned');
+    }
 }
